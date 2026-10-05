@@ -1,0 +1,50 @@
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Container principal */
+.container {
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Título principal */
+h1 {
+    color: darkblue;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Subtítulo */
+h2 {
+    color: darkblue;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Texto normal */
+.texto {
+    color: darkblue;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Texto destaque */
+.destaque {
+    color: darkblue;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Imagem */
+img {
+    margin-top: 20px;
+    border-radius: 50px;
+    width: 400px;
+}

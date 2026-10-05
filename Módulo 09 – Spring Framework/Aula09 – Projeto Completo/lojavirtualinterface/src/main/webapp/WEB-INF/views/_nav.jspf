@@ -1,0 +1,41 @@
+<%@ page pageEncoding="UTF-8"%>
+<%-- ==========================================================
+     Barra de navegacao compartilhada por todas as telas (mesmo padrao
+     do sistemacad, Modulo 08 - inclusao estatica via <%@ include %>
+     logo apos <body>). "paginaAtiva" e' setado pelo Servlet de cada
+     recurso antes do forward, so' para destacar o link atual.
+     ========================================================== --%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-semibold" href="${pageContext.request.contextPath}/">LojavirtualInterface</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navLojavirtual" aria-controls="navLojavirtual"
+                aria-expanded="false" aria-label="Alternar navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLojavirtual">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link ${paginaAtiva == 'categorias' ? 'active' : ''}"
+                       href="${pageContext.request.contextPath}/categorias">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${paginaAtiva == 'produtos' ? 'active' : ''}"
+                       href="${pageContext.request.contextPath}/produtos">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${paginaAtiva == 'clientes' ? 'active' : ''}"
+                       href="${pageContext.request.contextPath}/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${paginaAtiva == 'pedidos' ? 'active' : ''}"
+                       href="${pageContext.request.contextPath}/pedidos">Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${paginaAtiva == 'relatorios' ? 'active' : ''}"
+                       href="${pageContext.request.contextPath}/relatorios">Relatório</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

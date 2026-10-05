@@ -1,0 +1,110 @@
+package br.com.senac.aula07.model;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+/**
+ * Tabela "pergunta": cada interacao usuario -> IA fica registrada aqui, com
+ * a resposta, de onde ela veio (IA, CACHE ou FALLBACK) e quanto custou.
+ *
+ * "texto_normalizado" e a chave do cache: texto em minusculas, sem acentos,
+ * sem pontuacao e sem espacos duplicados (ver CacheService.normalizar).
+ */
+@Entity
+@Table(name = "pergunta", indexes = {
+        @Index(name = "idx_pergunta_usuario", columnList = "usuario_id"),
+        @Index(name = "idx_pergunta_normalizado", columnList = "texto_normalizado")
+})
+public class Pergunta {
+
+    public enum Origem { IA, CACHE, FALLBACK }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    @Column(nullable = false, length = 4000)
+    private String texto;
+
+    // length 500 (nao 4000 como "texto"): esta coluna tem indice
+    // (idx_pergunta_normalizado) usado para o lookup do cache, e o MySQL
+    // limita o tamanho de uma chave de indice a 3072 bytes - em utf8mb4
+    // (4 bytes/caractere) um varchar(4000) ultrapassaria esse limite.
+    @Column(name = "texto_normalizado", nullable = false, length = 500)
+    private String textoNormalizado;
+
+    @Column(length = 8000)
+    private String resposta;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private Origem origem;
+
+    @Column(length = 30)
+    private String provedor;
+
+    @Column(length = 60)
+    private String modelo;
+
+    private int tokensEntrada;
+    private int tokensSaida;
+    private long tempoMs;
+
+    /** Categoria atribuida pela IA (bonus): orcamento, prazo, garantia, outros. */
+    @Column(length = 30)
+    private String categoria;
+
+    @Column(name = "data_hora", nullable = false)
+    private LocalDateTime dataHora = LocalDateTime.now();
+
+    protected Pergunta() {}
+
+    public Pergunta(Usuario usuario, String texto, String textoNormalizado) {
+        this.usuario = usuario;
+        this.texto = texto;
+        this.textoNormalizado = textoNormalizado;
+        this.origem = Origem.IA;
+    }
+
+    public void registrarResposta(String resposta, Origem origem, String provedor, String modelo,
+                                  int tokensEntrada, int tokensSaida, long tempoMs) {
+        this.resposta = resposta;
+        this.origem = origem;
+        this.provedor = provedor;
+        this.modelo = modelo;
+        this.tokensEntrada = tokensEntrada;
+        this.tokensSaida = tokensSaida;
+        this.tempoMs = tempoMs;
+    }
+
+    public Long getId() { return id; }
+    public Usuario getUsuario() { return usuario; }
+    public String getTexto() { return texto; }
+    public String getTextoNormalizado() { return textoNormalizado; }
+    public String getResposta() { return resposta; }
+    public Origem getOrigem() { return origem; }
+    public String getProvedor() { return provedor; }
+    public String getModelo() { return modelo; }
+    public int getTokensEntrada() { return tokensEntrada; }
+    public int getTokensSaida() { return tokensSaida; }
+    public long getTempoMs() { return tempoMs; }
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public LocalDateTime getDataHora() { return dataHora; }
+}

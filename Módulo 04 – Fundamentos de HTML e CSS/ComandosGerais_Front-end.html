@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Referência Front-end</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 30px 20px;
+      color: #222;
+    }
+
+    h1 { text-align: center; margin-bottom: 6px; color: #333; }
+    .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 24px; }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 9px 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tab-btn.active {
+      background: #4a90d9;
+      color: #fff;
+      border-color: #4a90d9;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin: 18px 0 8px;
+    }
+
+    .cmd-list { display: flex; flex-direction: column; gap: 6px; }
+
+    .cmd-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .cmd-tag {
+      font-family: monospace;
+      font-size: 13px;
+      color: #1a6abf;
+      word-break: break-all;
+    }
+
+    .cmd-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .cmd-example {
+      font-family: monospace;
+      font-size: 11px;
+      color: #888;
+      margin-top: 4px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Referência Front-end</h1>
+  <p class="subtitle">HTML · CSS · JavaScript · Acessibilidade</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('html', this)">HTML</button>
+    <button class="tab-btn" onclick="switchTab('css', this)">CSS</button>
+    <button class="tab-btn" onclick="switchTab('flexgrid', this)">Flex & Grid</button>
+    <button class="tab-btn" onclick="switchTab('js', this)">JavaScript</button>
+    <button class="tab-btn" onclick="switchTab('acesso', this)">Acessibilidade</button>
+  </div>
+
+  <!-- ==================== HTML ==================== -->
+  <div id="tab-html" class="tab-content active">
+    <input type="text" placeholder="Buscar tag ou atributo HTML..." oninput="filtrar('html', this.value)">
+    <div class="cmd-list" id="list-html">
+
+      <div class="section-title">Estrutura do documento</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;!DOCTYPE html&gt;</span><span class="cmd-desc">Declara o tipo do documento como HTML5</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;html lang=""&gt;</span><span class="cmd-desc">Elemento raiz. O atributo lang define o idioma da página<span class="cmd-example">ex: &lt;html lang="pt-BR"&gt;</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;head&gt;</span><span class="cmd-desc">Metadados, título, links de CSS e scripts (não aparece na tela)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;body&gt;</span><span class="cmd-desc">Todo o conteúdo visível da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;meta charset="UTF-8"&gt;</span><span class="cmd-desc">Define codificação de caracteres (suporta acentos e símbolos)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;meta name="viewport"&gt;</span><span class="cmd-desc">Controla o zoom em dispositivos móveis<span class="cmd-example">ex: content="width=device-width, initial-scale=1.0"</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;title&gt;</span><span class="cmd-desc">Título exibido na aba do navegador</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;link rel="stylesheet"&gt;</span><span class="cmd-desc">Importa um arquivo CSS externo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;script src=""&gt;</span><span class="cmd-desc">Importa um arquivo JavaScript externo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;script defer&gt;</span><span class="cmd-desc">Carrega o JS após o HTML ser lido (evita bloqueio)</span></div>
+
+      <div class="section-title">Texto e semântica</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;h1&gt; a &lt;h6&gt;</span><span class="cmd-desc">Títulos hierárquicos. Importante para SEO e acessibilidade</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;p&gt;</span><span class="cmd-desc">Parágrafo de texto</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;span&gt;</span><span class="cmd-desc">Agrupa texto inline para estilização</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;strong&gt;</span><span class="cmd-desc">Texto em negrito com importância semântica</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;em&gt;</span><span class="cmd-desc">Texto em itálico com ênfase semântica</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;small&gt;</span><span class="cmd-desc">Texto secundário ou de menor importância</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;mark&gt;</span><span class="cmd-desc">Texto destacado (fundo amarelo por padrão)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;code&gt;</span><span class="cmd-desc">Trecho de código inline</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;pre&gt;</span><span class="cmd-desc">Bloco de texto com espaços e quebras preservados</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;blockquote&gt;</span><span class="cmd-desc">Citação em bloco</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;br&gt;</span><span class="cmd-desc">Quebra de linha</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;hr&gt;</span><span class="cmd-desc">Linha horizontal separadora</span></div>
+
+      <div class="section-title">Listas</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;ul&gt;</span><span class="cmd-desc">Lista não ordenada (marcadores)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;ol&gt;</span><span class="cmd-desc">Lista ordenada (números)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;li&gt;</span><span class="cmd-desc">Item de lista</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;dl&gt; / &lt;dt&gt; / &lt;dd&gt;</span><span class="cmd-desc">Lista de definição: termo e descrição</span></div>
+
+      <div class="section-title">Links e mídia</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;a href=""&gt;</span><span class="cmd-desc">Link para outra página ou âncora</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;a target="_blank"&gt;</span><span class="cmd-desc">Abre o link em nova aba</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;img src="" alt=""&gt;</span><span class="cmd-desc">Imagem. O atributo alt é obrigatório para acessibilidade</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;picture&gt;</span><span class="cmd-desc">Container para imagens responsivas com múltiplas fontes</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;video controls&gt;</span><span class="cmd-desc">Vídeo com controles de reprodução</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;audio controls&gt;</span><span class="cmd-desc">Áudio com controles de reprodução</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;iframe src=""&gt;</span><span class="cmd-desc">Incorpora outra página ou conteúdo externo (ex: Google Maps)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;source&gt;</span><span class="cmd-desc">Define fontes alternativas para video, audio ou picture</span></div>
+
+      <div class="section-title">Formulário</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;form action="" method=""&gt;</span><span class="cmd-desc">Define um formulário e para onde os dados vão</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="text"&gt;</span><span class="cmd-desc">Campo de texto simples</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="email"&gt;</span><span class="cmd-desc">Campo de e-mail com validação automática</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="password"&gt;</span><span class="cmd-desc">Campo de senha (oculta o texto)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="number"&gt;</span><span class="cmd-desc">Campo numérico</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="checkbox"&gt;</span><span class="cmd-desc">Caixa de seleção (múltipla escolha)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="radio"&gt;</span><span class="cmd-desc">Botão de opção (escolha única)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="file"&gt;</span><span class="cmd-desc">Campo para upload de arquivo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="date"&gt;</span><span class="cmd-desc">Seletor de data</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="range"&gt;</span><span class="cmd-desc">Controle deslizante (slider)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input type="hidden"&gt;</span><span class="cmd-desc">Campo invisível para enviar dados ocultos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input placeholder=""&gt;</span><span class="cmd-desc">Texto de dica exibido quando o campo está vazio</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input required&gt;</span><span class="cmd-desc">Campo obrigatório (valida antes de enviar)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input disabled&gt;</span><span class="cmd-desc">Campo desabilitado (não editável)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;label for=""&gt;</span><span class="cmd-desc">Rótulo vinculado a um campo pelo id</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;button type="submit"&gt;</span><span class="cmd-desc">Botão que envia o formulário</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;button type="button"&gt;</span><span class="cmd-desc">Botão sem ação padrão (usado com JavaScript)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;button type="reset"&gt;</span><span class="cmd-desc">Limpa todos os campos do formulário</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;select&gt; / &lt;option&gt;</span><span class="cmd-desc">Lista de opções (dropdown)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;textarea&gt;</span><span class="cmd-desc">Campo de texto com múltiplas linhas</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;fieldset&gt; / &lt;legend&gt;</span><span class="cmd-desc">Agrupa campos relacionados com um título</span></div>
+
+      <div class="section-title">Tabela</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;table&gt;</span><span class="cmd-desc">Define uma tabela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;thead&gt; / &lt;tbody&gt; / &lt;tfoot&gt;</span><span class="cmd-desc">Agrupa cabeçalho, corpo e rodapé da tabela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;tr&gt;</span><span class="cmd-desc">Linha da tabela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;th&gt;</span><span class="cmd-desc">Célula de cabeçalho (negrito por padrão)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;td&gt;</span><span class="cmd-desc">Célula de dado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">colspan / rowspan</span><span class="cmd-desc">Mescla colunas ou linhas da tabela<span class="cmd-example">ex: &lt;td colspan="2"&gt;</span></span></div>
+
+      <div class="section-title">Layout semântico</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;div&gt;</span><span class="cmd-desc">Bloco genérico sem significado semântico</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;header&gt;</span><span class="cmd-desc">Cabeçalho da página ou seção</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;nav&gt;</span><span class="cmd-desc">Bloco de navegação (menus e links)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;main&gt;</span><span class="cmd-desc">Conteúdo principal único da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;section&gt;</span><span class="cmd-desc">Seção temática da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;article&gt;</span><span class="cmd-desc">Conteúdo independente (post, notícia, card)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;aside&gt;</span><span class="cmd-desc">Conteúdo lateral ou complementar</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;footer&gt;</span><span class="cmd-desc">Rodapé da página ou seção</span></div>
+
+      <div class="section-title">Atributos globais comuns</div>
+      <div class="cmd-item"><span class="cmd-tag">id=""</span><span class="cmd-desc">Identificador único do elemento (usado em CSS e JS)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">class=""</span><span class="cmd-desc">Classe CSS (pode ser reutilizada em vários elementos)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">style=""</span><span class="cmd-desc">CSS inline aplicado diretamente ao elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">data-*</span><span class="cmd-desc">Armazena dados personalizados no elemento<span class="cmd-example">ex: data-id="42" — acessado via JS com dataset.id</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">hidden</span><span class="cmd-desc">Esconde o elemento da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">title=""</span><span class="cmd-desc">Tooltip que aparece ao passar o mouse</span></div>
+
+    </div>
+  </div>
+
+  <!-- ==================== CSS ==================== -->
+  <div id="tab-css" class="tab-content">
+    <input type="text" placeholder="Buscar propriedade CSS..." oninput="filtrar('css', this.value)">
+    <div class="cmd-list" id="list-css">
+
+      <div class="section-title">Seletores</div>
+      <div class="cmd-item"><span class="cmd-tag">elemento</span><span class="cmd-desc">Seleciona todas as tags daquele tipo<span class="cmd-example">ex: p { color: red; }</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">.classe</span><span class="cmd-desc">Seleciona elementos com aquela classe</span></div>
+      <div class="cmd-item"><span class="cmd-tag">#id</span><span class="cmd-desc">Seleciona o elemento com aquele id (único)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">*</span><span class="cmd-desc">Seleciona todos os elementos da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">pai filho</span><span class="cmd-desc">Seleciona descendentes<span class="cmd-example">ex: div p (qualquer p dentro de div)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">pai > filho</span><span class="cmd-desc">Seleciona apenas filhos diretos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">el1, el2</span><span class="cmd-desc">Seleciona múltiplos elementos de uma vez</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:hover</span><span class="cmd-desc">Aplica estilo quando o mouse está sobre o elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:focus</span><span class="cmd-desc">Aplica estilo quando o elemento está focado (ex: input)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:active</span><span class="cmd-desc">Aplica estilo no momento do clique</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:first-child</span><span class="cmd-desc">Seleciona o primeiro filho do elemento pai</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:last-child</span><span class="cmd-desc">Seleciona o último filho</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:nth-child(n)</span><span class="cmd-desc">Seleciona o enésimo filho<span class="cmd-example">ex: :nth-child(2) ou :nth-child(odd)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">:not(seletor)</span><span class="cmd-desc">Seleciona elementos que não correspondem ao seletor</span></div>
+      <div class="cmd-item"><span class="cmd-tag">::before / ::after</span><span class="cmd-desc">Insere conteúdo antes ou depois do elemento (requer content:)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">::placeholder</span><span class="cmd-desc">Estiliza o texto de placeholder de inputs</span></div>
+
+      <div class="section-title">Texto e fonte</div>
+      <div class="cmd-item"><span class="cmd-tag">color</span><span class="cmd-desc">Cor do texto<span class="cmd-example">ex: color: #333 / color: red / color: rgb(0,0,0)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-size</span><span class="cmd-desc">Tamanho da fonte (px, rem, em, %)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-weight</span><span class="cmd-desc">Espessura da fonte (normal, bold, 100–900)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-family</span><span class="cmd-desc">Tipo de fonte usada</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-style</span><span class="cmd-desc">Estilo da fonte (normal, italic)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">text-align</span><span class="cmd-desc">Alinhamento: left, center, right, justify</span></div>
+      <div class="cmd-item"><span class="cmd-tag">text-decoration</span><span class="cmd-desc">Decoração: underline, none, line-through</span></div>
+      <div class="cmd-item"><span class="cmd-tag">text-transform</span><span class="cmd-desc">Transforma texto: uppercase, lowercase, capitalize</span></div>
+      <div class="cmd-item"><span class="cmd-tag">line-height</span><span class="cmd-desc">Espaçamento entre linhas</span></div>
+      <div class="cmd-item"><span class="cmd-tag">letter-spacing</span><span class="cmd-desc">Espaçamento entre letras</span></div>
+      <div class="cmd-item"><span class="cmd-tag">word-spacing</span><span class="cmd-desc">Espaçamento entre palavras</span></div>
+      <div class="cmd-item"><span class="cmd-tag">white-space</span><span class="cmd-desc">Controla quebra de linha: nowrap, pre, normal</span></div>
+      <div class="cmd-item"><span class="cmd-tag">overflow: hidden + text-overflow: ellipsis</span><span class="cmd-desc">Corta texto longo com "..." no final</span></div>
+
+      <div class="section-title">Cores e fundo</div>
+      <div class="cmd-item"><span class="cmd-tag">background-color</span><span class="cmd-desc">Cor de fundo do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">background-image</span><span class="cmd-desc">Imagem de fundo<span class="cmd-example">ex: url('imagem.jpg')</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">background-size</span><span class="cmd-desc">Tamanho do fundo: cover, contain, 100%</span></div>
+      <div class="cmd-item"><span class="cmd-tag">background-position</span><span class="cmd-desc">Posição do fundo: center, top, left</span></div>
+      <div class="cmd-item"><span class="cmd-tag">background-repeat</span><span class="cmd-desc">Repetição do fundo: no-repeat, repeat-x, repeat-y</span></div>
+      <div class="cmd-item"><span class="cmd-tag">background (shorthand)</span><span class="cmd-desc">Todas as propriedades de fundo em uma linha<span class="cmd-example">ex: background: url() no-repeat center/cover</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">opacity</span><span class="cmd-desc">Transparência do elemento inteiro (0 a 1)</span></div>
+
+      <div class="section-title">Borda</div>
+      <div class="cmd-item"><span class="cmd-tag">border</span><span class="cmd-desc">Borda em uma linha<span class="cmd-example">ex: border: 1px solid #ccc</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-radius</span><span class="cmd-desc">Arredonda os cantos<span class="cmd-example">ex: 8px ou 50% para círculo</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-color / border-width / border-style</span><span class="cmd-desc">Cor, espessura e estilo da borda separadamente</span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-top / right / bottom / left</span><span class="cmd-desc">Borda em apenas um lado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">outline</span><span class="cmd-desc">Contorno externo (não ocupa espaço, comum em focus)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">box-shadow</span><span class="cmd-desc">Sombra ao redor do elemento<span class="cmd-example">ex: 0 2px 8px rgba(0,0,0,0.2)</span></span></div>
+
+      <div class="section-title">Tamanho e espaçamento</div>
+      <div class="cmd-item"><span class="cmd-tag">width / height</span><span class="cmd-desc">Largura e altura do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">max-width / min-width</span><span class="cmd-desc">Limites de largura</span></div>
+      <div class="cmd-item"><span class="cmd-tag">max-height / min-height</span><span class="cmd-desc">Limites de altura</span></div>
+      <div class="cmd-item"><span class="cmd-tag">padding</span><span class="cmd-desc">Espaço interno (entre conteúdo e borda)<span class="cmd-example">ex: padding: 10px 20px (vertical horizontal)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">margin</span><span class="cmd-desc">Espaço externo ao redor do elemento<span class="cmd-example">ex: margin: 0 auto (centraliza bloco)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">box-sizing: border-box</span><span class="cmd-desc">Padding e border não aumentam o tamanho total do elemento</span></div>
+
+      <div class="section-title">Display e visibilidade</div>
+      <div class="cmd-item"><span class="cmd-tag">display: block</span><span class="cmd-desc">Ocupa a linha inteira, aceita width/height</span></div>
+      <div class="cmd-item"><span class="cmd-tag">display: inline</span><span class="cmd-desc">Fica na mesma linha, não aceita width/height</span></div>
+      <div class="cmd-item"><span class="cmd-tag">display: inline-block</span><span class="cmd-desc">Fica na mesma linha mas aceita width/height</span></div>
+      <div class="cmd-item"><span class="cmd-tag">display: none</span><span class="cmd-desc">Esconde o elemento e remove o espaço dele</span></div>
+      <div class="cmd-item"><span class="cmd-tag">visibility: hidden</span><span class="cmd-desc">Esconde o elemento mas mantém o espaço</span></div>
+      <div class="cmd-item"><span class="cmd-tag">overflow</span><span class="cmd-desc">Comportamento do conteúdo que ultrapassa: hidden, scroll, auto</span></div>
+
+      <div class="section-title">Posicionamento</div>
+      <div class="cmd-item"><span class="cmd-tag">position: static</span><span class="cmd-desc">Padrão. Segue o fluxo normal do documento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">position: relative</span><span class="cmd-desc">Posicionado em relação a si mesmo. Não sai do fluxo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">position: absolute</span><span class="cmd-desc">Posicionado em relação ao pai com position. Sai do fluxo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">position: fixed</span><span class="cmd-desc">Fixo na tela. Não move com o scroll</span></div>
+      <div class="cmd-item"><span class="cmd-tag">position: sticky</span><span class="cmd-desc">Gruda na tela ao rolar até ele (ex: menu fixo)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">top / right / bottom / left</span><span class="cmd-desc">Deslocamento do elemento posicionado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">z-index</span><span class="cmd-desc">Ordem de sobreposição (maior fica na frente)</span></div>
+
+      <div class="section-title">Transição e animação</div>
+      <div class="cmd-item"><span class="cmd-tag">transition</span><span class="cmd-desc">Animação suave ao mudar uma propriedade<span class="cmd-example">ex: transition: all 0.3s ease</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">transform</span><span class="cmd-desc">Transforma o elemento: rotate, scale, translate, skew<span class="cmd-example">ex: transform: rotate(45deg)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">@keyframes</span><span class="cmd-desc">Define uma animação com etapas (from/to ou porcentagens)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">animation</span><span class="cmd-desc">Aplica uma animação @keyframes ao elemento<span class="cmd-example">ex: animation: nome 1s ease infinite</span></span></div>
+
+      <div class="section-title">Variáveis e responsividade</div>
+      <div class="cmd-item"><span class="cmd-tag">--nome-var</span><span class="cmd-desc">Declara uma variável CSS (custom property)<span class="cmd-example">ex: --cor-principal: #4a90d9</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">var(--nome-var)</span><span class="cmd-desc">Usa o valor de uma variável CSS</span></div>
+      <div class="cmd-item"><span class="cmd-tag">@media (max-width: Npx)</span><span class="cmd-desc">Aplica estilos só até certa largura de tela (responsividade)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">@media (min-width: Npx)</span><span class="cmd-desc">Aplica estilos a partir de certa largura de tela</span></div>
+
+      <div class="section-title">Outros</div>
+      <div class="cmd-item"><span class="cmd-tag">cursor</span><span class="cmd-desc">Tipo do cursor: pointer, default, not-allowed, grab</span></div>
+      <div class="cmd-item"><span class="cmd-tag">pointer-events: none</span><span class="cmd-desc">Desativa cliques e hover no elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">user-select: none</span><span class="cmd-desc">Impede que o texto seja selecionado pelo usuário</span></div>
+      <div class="cmd-item"><span class="cmd-tag">resize</span><span class="cmd-desc">Permite redimensionar o elemento: none, both, vertical</span></div>
+      <div class="cmd-item"><span class="cmd-tag">object-fit</span><span class="cmd-desc">Como imagens se ajustam ao container: cover, contain, fill</span></div>
+
+    </div>
+  </div>
+
+  <!-- ==================== FLEX & GRID ==================== -->
+  <div id="tab-flexgrid" class="tab-content">
+    <input type="text" placeholder="Buscar Flexbox ou Grid..." oninput="filtrar('flexgrid', this.value)">
+    <div class="cmd-list" id="list-flexgrid">
+
+      <div class="section-title">Flexbox — container</div>
+      <div class="cmd-item"><span class="cmd-tag">display: flex</span><span class="cmd-desc">Ativa o layout flexível no elemento pai</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-direction</span><span class="cmd-desc">Direção dos filhos: row, row-reverse, column, column-reverse</span></div>
+      <div class="cmd-item"><span class="cmd-tag">justify-content</span><span class="cmd-desc">Alinha no eixo principal: flex-start, center, flex-end, space-between, space-around, space-evenly</span></div>
+      <div class="cmd-item"><span class="cmd-tag">align-items</span><span class="cmd-desc">Alinha no eixo cruzado: flex-start, center, flex-end, stretch, baseline</span></div>
+      <div class="cmd-item"><span class="cmd-tag">align-content</span><span class="cmd-desc">Alinha múltiplas linhas (quando flex-wrap está ativo)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-wrap</span><span class="cmd-desc">Quebra para nova linha: nowrap, wrap, wrap-reverse</span></div>
+      <div class="cmd-item"><span class="cmd-tag">gap</span><span class="cmd-desc">Espaço entre os filhos<span class="cmd-example">ex: gap: 16px ou gap: 8px 16px (linha coluna)</span></span></div>
+
+      <div class="section-title">Flexbox — filhos</div>
+      <div class="cmd-item"><span class="cmd-tag">flex-grow</span><span class="cmd-desc">Quanto o filho cresce para preencher o espaço disponível</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-shrink</span><span class="cmd-desc">Quanto o filho encolhe quando falta espaço</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-basis</span><span class="cmd-desc">Tamanho inicial do filho antes de crescer/encolher</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex (shorthand)</span><span class="cmd-desc">Atalho para grow shrink basis<span class="cmd-example">ex: flex: 1 (cresce igualmente)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">align-self</span><span class="cmd-desc">Sobrescreve align-items para um filho específico</span></div>
+      <div class="cmd-item"><span class="cmd-tag">order</span><span class="cmd-desc">Muda a ordem visual do filho sem alterar o HTML</span></div>
+
+      <div class="section-title">Grid — container</div>
+      <div class="cmd-item"><span class="cmd-tag">display: grid</span><span class="cmd-desc">Ativa o layout em grade no elemento pai</span></div>
+      <div class="cmd-item"><span class="cmd-tag">grid-template-columns</span><span class="cmd-desc">Define as colunas da grade<span class="cmd-example">ex: 1fr 1fr 1fr ou repeat(3, 1fr)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">grid-template-rows</span><span class="cmd-desc">Define as linhas da grade</span></div>
+      <div class="cmd-item"><span class="cmd-tag">gap / column-gap / row-gap</span><span class="cmd-desc">Espaço entre colunas e linhas do grid</span></div>
+      <div class="cmd-item"><span class="cmd-tag">justify-items</span><span class="cmd-desc">Alinha o conteúdo das células horizontalmente</span></div>
+      <div class="cmd-item"><span class="cmd-tag">align-items</span><span class="cmd-desc">Alinha o conteúdo das células verticalmente</span></div>
+      <div class="cmd-item"><span class="cmd-tag">repeat(n, tamanho)</span><span class="cmd-desc">Repete colunas ou linhas<span class="cmd-example">ex: repeat(4, 1fr)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">auto-fit / auto-fill</span><span class="cmd-desc">Cria colunas automaticamente conforme o espaço disponível<span class="cmd-example">ex: repeat(auto-fit, minmax(200px, 1fr))</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">minmax(min, max)</span><span class="cmd-desc">Define tamanho mínimo e máximo de uma coluna ou linha</span></div>
+
+      <div class="section-title">Grid — filhos</div>
+      <div class="cmd-item"><span class="cmd-tag">grid-column</span><span class="cmd-desc">Define em quais colunas o filho se posiciona<span class="cmd-example">ex: grid-column: 1 / 3 (ocupa colunas 1 e 2)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">grid-row</span><span class="cmd-desc">Define em quais linhas o filho se posiciona</span></div>
+      <div class="cmd-item"><span class="cmd-tag">grid-column: 1 / -1</span><span class="cmd-desc">O elemento ocupa todas as colunas da grade</span></div>
+      <div class="cmd-item"><span class="cmd-tag">justify-self / align-self</span><span class="cmd-desc">Alinha um filho específico dentro de sua célula</span></div>
+
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <div id="tab-js" class="tab-content">
+    <input type="text" placeholder="Buscar comando JavaScript..." oninput="filtrar('js', this.value)">
+    <div class="cmd-list" id="list-js">
+
+      <div class="section-title">Variáveis</div>
+      <div class="cmd-item"><span class="cmd-tag">var</span><span class="cmd-desc">Declara variável (escopo global/função). Evite usar hoje</span></div>
+      <div class="cmd-item"><span class="cmd-tag">let</span><span class="cmd-desc">Declara variável que pode ser reatribuída (escopo de bloco)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">const</span><span class="cmd-desc">Declara constante que não pode ser reatribuída</span></div>
+
+      <div class="section-title">Tipos de dados</div>
+      <div class="cmd-item"><span class="cmd-tag">String</span><span class="cmd-desc">Texto<span class="cmd-example">ex: "Olá" ou 'Olá' ou `Olá ${nome}`</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">Number</span><span class="cmd-desc">Número (inteiro ou decimal)<span class="cmd-example">ex: 42 / 3.14</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">Boolean</span><span class="cmd-desc">Verdadeiro ou falso<span class="cmd-example">ex: true / false</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">Array</span><span class="cmd-desc">Lista de valores<span class="cmd-example">ex: [1, 2, 3] / ["a", "b"]</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">Object</span><span class="cmd-desc">Conjunto de chave e valor<span class="cmd-example">ex: { nome: "João", idade: 20 }</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">null / undefined</span><span class="cmd-desc">Ausência de valor intencional / variável não definida</span></div>
+
+      <div class="section-title">Condicionais e loops</div>
+      <div class="cmd-item"><span class="cmd-tag">if / else if / else</span><span class="cmd-desc">Executa código conforme uma condição</span></div>
+      <div class="cmd-item"><span class="cmd-tag">switch / case</span><span class="cmd-desc">Alternativa ao if para múltiplos valores fixos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">for</span><span class="cmd-desc">Loop com contador<span class="cmd-example">ex: for (let i = 0; i &lt; 10; i++)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">while</span><span class="cmd-desc">Loop enquanto a condição for verdadeira</span></div>
+      <div class="cmd-item"><span class="cmd-tag">for...of</span><span class="cmd-desc">Percorre os valores de um array<span class="cmd-example">ex: for (let item of lista)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">for...in</span><span class="cmd-desc">Percorre as chaves de um objeto</span></div>
+      <div class="cmd-item"><span class="cmd-tag">break / continue</span><span class="cmd-desc">Para o loop / pula para a próxima iteração</span></div>
+
+      <div class="section-title">Funções</div>
+      <div class="cmd-item"><span class="cmd-tag">function nome() {}</span><span class="cmd-desc">Declara uma função</span></div>
+      <div class="cmd-item"><span class="cmd-tag">return</span><span class="cmd-desc">Retorna um valor da função</span></div>
+      <div class="cmd-item"><span class="cmd-tag">Arrow function</span><span class="cmd-desc">Função resumida<span class="cmd-example">ex: const soma = (a, b) => a + b</span></span></div>
+
+      <div class="section-title">DOM — Selecionar elementos</div>
+      <div class="cmd-item"><span class="cmd-tag">document.getElementById()</span><span class="cmd-desc">Seleciona um elemento pelo id</span></div>
+      <div class="cmd-item"><span class="cmd-tag">document.querySelector()</span><span class="cmd-desc">Seleciona o primeiro elemento que bate com o seletor CSS</span></div>
+      <div class="cmd-item"><span class="cmd-tag">document.querySelectorAll()</span><span class="cmd-desc">Seleciona todos os elementos que batem com o seletor</span></div>
+      <div class="cmd-item"><span class="cmd-tag">document.getElementsByClassName()</span><span class="cmd-desc">Seleciona elementos pela classe</span></div>
+
+      <div class="section-title">DOM — Modificar elementos</div>
+      <div class="cmd-item"><span class="cmd-tag">.innerHTML</span><span class="cmd-desc">Lê ou define o HTML interno do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.innerText</span><span class="cmd-desc">Lê ou define o texto visível do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.value</span><span class="cmd-desc">Lê ou define o valor de um input ou select</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.style.propriedade</span><span class="cmd-desc">Altera o CSS inline de um elemento<span class="cmd-example">ex: el.style.color = "red"</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">.classList.add()</span><span class="cmd-desc">Adiciona uma classe ao elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.classList.remove()</span><span class="cmd-desc">Remove uma classe do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.classList.toggle()</span><span class="cmd-desc">Adiciona a classe se não tiver, remove se tiver</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.classList.contains()</span><span class="cmd-desc">Verifica se o elemento tem uma classe (retorna true/false)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.setAttribute()</span><span class="cmd-desc">Define um atributo no elemento<span class="cmd-example">ex: el.setAttribute("disabled", true)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">.getAttribute()</span><span class="cmd-desc">Lê o valor de um atributo</span></div>
+
+      <div class="section-title">DOM — Criar e remover</div>
+      <div class="cmd-item"><span class="cmd-tag">document.createElement()</span><span class="cmd-desc">Cria um novo elemento HTML<span class="cmd-example">ex: document.createElement("div")</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">.appendChild()</span><span class="cmd-desc">Adiciona um filho ao final do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.remove()</span><span class="cmd-desc">Remove o elemento do DOM</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.removeChild()</span><span class="cmd-desc">Remove um filho específico de um elemento pai</span></div>
+
+      <div class="section-title">Eventos</div>
+      <div class="cmd-item"><span class="cmd-tag">addEventListener()</span><span class="cmd-desc">Escuta um evento no elemento<span class="cmd-example">ex: el.addEventListener("click", função)</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">onclick</span><span class="cmd-desc">Evento de clique diretamente no HTML ou JS</span></div>
+      <div class="cmd-item"><span class="cmd-tag">onchange</span><span class="cmd-desc">Dispara quando o valor de um input muda</span></div>
+      <div class="cmd-item"><span class="cmd-tag">oninput</span><span class="cmd-desc">Dispara a cada caractere digitado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">onsubmit</span><span class="cmd-desc">Dispara quando um formulário é enviado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">onload</span><span class="cmd-desc">Dispara quando a página termina de carregar</span></div>
+      <div class="cmd-item"><span class="cmd-tag">event.preventDefault()</span><span class="cmd-desc">Cancela o comportamento padrão do evento (ex: envio do form)</span></div>
+
+      <div class="section-title">Arrays — métodos comuns</div>
+      <div class="cmd-item"><span class="cmd-tag">.push()</span><span class="cmd-desc">Adiciona um item ao final do array</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.pop()</span><span class="cmd-desc">Remove e retorna o último item</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.splice()</span><span class="cmd-desc">Remove ou insere itens em qualquer posição</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.length</span><span class="cmd-desc">Retorna o tamanho do array</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.forEach()</span><span class="cmd-desc">Percorre todos os itens e executa uma função</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.map()</span><span class="cmd-desc">Cria um novo array transformando cada item</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.filter()</span><span class="cmd-desc">Cria um novo array com itens que passam em um teste</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.find()</span><span class="cmd-desc">Retorna o primeiro item que passa em um teste</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.includes()</span><span class="cmd-desc">Verifica se um valor existe no array (true/false)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.indexOf()</span><span class="cmd-desc">Retorna o índice do item no array (-1 se não encontrar)</span></div>
+
+      <div class="section-title">Strings — métodos comuns</div>
+      <div class="cmd-item"><span class="cmd-tag">.toUpperCase() / .toLowerCase()</span><span class="cmd-desc">Converte para maiúsculas ou minúsculas</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.trim()</span><span class="cmd-desc">Remove espaços do início e do fim</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.includes()</span><span class="cmd-desc">Verifica se uma string contém outra</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.replace()</span><span class="cmd-desc">Substitui parte da string por outra</span></div>
+      <div class="cmd-item"><span class="cmd-tag">.split()</span><span class="cmd-desc">Divide a string em um array<span class="cmd-example">ex: "a,b,c".split(",") → ["a","b","c"]</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">.length</span><span class="cmd-desc">Retorna o número de caracteres da string</span></div>
+
+      <div class="section-title">Outros</div>
+      <div class="cmd-item"><span class="cmd-tag">console.log()</span><span class="cmd-desc">Exibe um valor no console do navegador (F12)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">alert()</span><span class="cmd-desc">Exibe uma caixa de alerta</span></div>
+      <div class="cmd-item"><span class="cmd-tag">confirm()</span><span class="cmd-desc">Caixa de confirmação (retorna true ou false)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">parseInt() / parseFloat()</span><span class="cmd-desc">Converte string para número inteiro ou decimal</span></div>
+      <div class="cmd-item"><span class="cmd-tag">isNaN()</span><span class="cmd-desc">Verifica se um valor não é um número</span></div>
+      <div class="cmd-item"><span class="cmd-tag">Math.round() / .floor() / .ceil()</span><span class="cmd-desc">Arredonda número: normal / para baixo / para cima</span></div>
+      <div class="cmd-item"><span class="cmd-tag">Math.max() / Math.min()</span><span class="cmd-desc">Retorna o maior ou menor valor de uma lista</span></div>
+      <div class="cmd-item"><span class="cmd-tag">setTimeout(fn, ms)</span><span class="cmd-desc">Executa uma função após X milissegundos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">setInterval(fn, ms)</span><span class="cmd-desc">Executa uma função repetidamente a cada X milissegundos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">JSON.stringify()</span><span class="cmd-desc">Converte objeto JavaScript para string JSON</span></div>
+      <div class="cmd-item"><span class="cmd-tag">JSON.parse()</span><span class="cmd-desc">Converte string JSON para objeto JavaScript</span></div>
+
+    </div>
+  </div>
+
+  <!-- ==================== ACESSIBILIDADE ==================== -->
+  <div id="tab-acesso" class="tab-content">
+    <input type="text" placeholder="Buscar dica de acessibilidade..." oninput="filtrar('acesso', this.value)">
+    <div class="cmd-list" id="list-acesso">
+
+      <div class="section-title">Atributos ARIA</div>
+      <div class="cmd-item"><span class="cmd-tag">alt=""</span><span class="cmd-desc">Texto alternativo para imagens. Obrigatório para leitores de tela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">aria-label=""</span><span class="cmd-desc">Rótulo acessível para elementos sem texto visível<span class="cmd-example">ex: botão com só ícone</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">aria-hidden="true"</span><span class="cmd-desc">Esconde o elemento de leitores de tela (ícones decorativos)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">aria-expanded=""</span><span class="cmd-desc">Indica se um menu ou acordeão está aberto ou fechado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">aria-required="true"</span><span class="cmd-desc">Indica que o campo é obrigatório para tecnologias assistivas</span></div>
+      <div class="cmd-item"><span class="cmd-tag">role=""</span><span class="cmd-desc">Define o papel do elemento<span class="cmd-example">ex: role="button", role="navigation", role="alert"</span></span></div>
+      <div class="cmd-item"><span class="cmd-tag">tabindex="0"</span><span class="cmd-desc">Torna o elemento focável pelo teclado (Tab)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">tabindex="-1"</span><span class="cmd-desc">Remove o elemento da ordem de tabulação</span></div>
+
+      <div class="section-title">Boas práticas</div>
+      <div class="cmd-item"><span class="cmd-tag">label for + input id</span><span class="cmd-desc">Associa o rótulo ao campo. Clicando no label, o input é focado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">:focus</span><span class="cmd-desc">Sempre defina um estilo de foco visível para navegação por teclado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">contraste de cores</span><span class="cmd-desc">Texto deve ter contraste mínimo de 4.5:1 com o fundo (WCAG AA)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">não use só cor</span><span class="cmd-desc">Não transmita informação apenas pela cor (adicione ícone ou texto)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">ordem lógica de heading</span><span class="cmd-desc">Use h1 → h2 → h3 em sequência. Não pule níveis</span></div>
+      <div class="cmd-item"><span class="cmd-tag">lang no html</span><span class="cmd-desc">Defina sempre o idioma: &lt;html lang="pt-BR"&gt;</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
+      document.getElementById('tab-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function filtrar(tab, query) {
+      var q = query.toLowerCase();
+      var items = document.querySelectorAll('#list-' + tab + ' .cmd-item');
+      var sections = document.querySelectorAll('#list-' + tab + ' .section-title');
+      items.forEach(function(item) {
+        item.style.display = item.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+      sections.forEach(function(sec) {
+        sec.style.display = q ? 'none' : '';
+      });
+    }
+  </script>
+
+</body>
+</html>

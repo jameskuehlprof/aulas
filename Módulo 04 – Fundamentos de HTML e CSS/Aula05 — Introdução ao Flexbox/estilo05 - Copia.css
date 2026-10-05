@@ -1,0 +1,64 @@
+.menu {
+    display: flex;
+    gap: 20px;
+    background-color: #a5a054;
+    padding: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #ddd;
+    padding: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: steelblue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 200px;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.menu-lateral {
+    width: 222px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+.conteudo {
+    flex: 1;
+    background-color: #c5bbbbc6;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+body 
+{font-family:Verdana, Geneva, Tahoma, sans-serif}

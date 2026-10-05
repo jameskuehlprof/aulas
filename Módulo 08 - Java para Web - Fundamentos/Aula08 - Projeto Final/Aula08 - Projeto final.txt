@@ -1,0 +1,62 @@
+Aula 8 – Projeto Final 
+Objetivos: Adequar sistema de cadastro de clientes, pedidos e itens de pedidos
+
+Arquitetura
+MVC.
+JSP.
+Servlet.
+DAO.
+JDBC.
+MySQL.
+
+Recursos Obrigatórios
+✔ Maven
+✔ Tomcat
+✔ Servlets
+✔ JSP
+✔ HTML
+✔ CSS
+✔ Bootstrap
+✔ JDBC
+✔ DAO
+✔ MVC
+✔ MySQL
+✔ CRUD completo
+
+
+Projeto Final Avaliativo
+Cada aluno ou dupla deverá adequar o sistema de cadastro de clientes, pedidos e itens contemplando os seguintes recursos:
+•Criar 3 novos campos no banco de dados MySQL na tabela de cliente e utilizar no cadastro de clientes dentro da paginas de clientes no Eclipse
+•Criar uma tabela secundária de produto com campos a escolher e fazer o referenciamento dentro do fonte do sistema completo para efetuar o respectivo cadastro(Poderá utilizar IA para este passo)
+
+Requisitos obrigatórios
+•Arquitetura MVC 
+•Organização em pacotes (controller, model, dao, util e view) 
+•Banco de dados MySQL com pelo menos 3 tabelas relacionadas 
+•Utilização de JDBC com PreparedStatement 
+•Operações CRUD completas 
+•Interface em JSP com HTML e CSS
+•Navegação entre páginas 
+•Tratamento básico de erros  
+
+Critérios de Avaliação
+Critério	                Pontos
+Organização do projeto (MVC)	  1.5
+Banco de dados e modelagem	  1.5
+Funcionamento do CRUD	          2.0
+Uso correto de Servlets e JSP	  2.0
+Implementação do JDBC	          1.0
+Interface e usabilidade	          1.0
+Qualidade e organização do código 1.0
+Total:                           10.0 pontos
+
+Competências Desenvolvidas ao Final do Módulo
+Ao concluir este módulo o aluno será capaz de:
+•Compreender o funcionamento de aplicações web baseadas em Java. 
+•Configurar e executar projetos web utilizando Apache Tomcat e Maven. 
+•Desenvolver páginas dinâmicas com JSP e processar requisições utilizando Servlets. 
+•Conectar aplicações Java ao MySQL utilizando JDBC e boas práticas com PreparedStatement. 
+•Organizar projetos seguindo o padrão de arquitetura MVC. 
+•Implementar aplicações web com persistência de dados e operações CRUD completas. 
+•Desenvolver um sistema web funcional integrando Java, banco de dados e interface web, estabelecendo uma base sólida para o estudo de frameworks como Spring Boot, Jakarta EE e outras tecnologias modernas do ecossistema Java.
+

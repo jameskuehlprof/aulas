@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Java-Version: 25
+Build-Jdk-Spec: 21
+Implementation-Title: Aula 08 - Avaliacao Final: TechFix Inteligente (ki
+ t do aluno)
+Implementation-Version: 1.0.0
+Created-By: Maven Integration for Eclipse
+

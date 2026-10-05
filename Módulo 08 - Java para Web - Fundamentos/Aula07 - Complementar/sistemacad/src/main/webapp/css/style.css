@@ -1,0 +1,73 @@
+/* =========================================================
+   SistemaCad - Folha de estilos própria
+   (Aula 07 - Complementar: Pedido / ItemPedido + Bootstrap)
+   =========================================================
+
+   A partir da Aula 07, a interface usa o Bootstrap 5 (via CDN, ver
+   <link> no <head> de cada JSP) para os componentes prontos (botões,
+   formulários, tabelas, navbar, badges, alerts...).
+
+   Este arquivo NÃO recria esses componentes do zero. Ele faz só duas
+   coisas, nessa ordem de importância para quem está aprendendo:
+
+   1) Reskin: sobrescreve as CSS VARIABLES que o próprio Bootstrap 5.3
+      usa internamente (--bs-primary, --bs-link-color etc.) para que
+      botões, navbar, links e badges usem a identidade visual azul do
+      SistemaCad, sem precisar reescrever cada componente na unha.
+   2) Pequenos ajustes visuais que o Bootstrap não cobre (fundo da
+      página, cabeçalho da tabela, rodapé).
+
+   Importante: este <link> deve vir DEPOIS do link do bootstrap.min.css
+   no <head> do JSP, para que estas regras "vençam" quando houver
+   conflito (mesma especificidade, e quem carrega por último ganha).
+   ========================================================= */
+
+:root {
+    --bs-primary: #1e3a5f;
+    --bs-primary-rgb: 30, 58, 95;
+    --bs-link-color: #1e3a5f;
+    --bs-link-color-rgb: 30, 58, 95;
+    --bs-link-hover-color: #16304f;
+    --sistemacad-azul-claro: #ebf4ff;
+}
+
+body {
+    background-color: #f7fafc;
+}
+
+/* Cabeçalho das tabelas com o azul claro da identidade visual */
+.table thead th {
+    background-color: var(--sistemacad-azul-claro);
+    color: var(--bs-primary);
+    border-bottom-width: 2px;
+    white-space: nowrap;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--sistemacad-azul-claro);
+}
+
+/* Cartões com sombra suave, no lugar da borda padrão do Bootstrap */
+.card {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+    letter-spacing: 0.4px;
+}
+
+/* Linhas dinâmicas de item do pedido (pedidos/form.jsp) */
+.subtotal-linha {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+#totalPedido {
+    color: var(--bs-primary);
+}
+
+footer.text-muted {
+    border-top: 1px solid #e2e8f0;
+}

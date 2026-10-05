@@ -1,0 +1,154 @@
+O que é um Pull Request (PR): Um Pull Request (PR) é uma solicitação para incorporar alterações de uma branch em outra branch no GitHub.
+
+Fluxo comum:
+
+feature-login  --->  main
+
+Você desenvolve em uma branch separada e depois solicita revisão antes do merge.
+
+Fluxo completo de Pull Request
+1. Atualizar projeto
+
+Antes de começar: git pull origin main
+
+2. Criar uma branch
+Exemplo:
+git checkout -b feature-login ou: git switch -c feature-login
+
+3. Fazer alterações
+Exemplo: echo "Tela de Login" > login.txt
+
+4. Adicionar arquivos
+git add .
+
+5. Criar commit
+git commit -m "Cria funcionalidade de login"
+
+6. Enviar branch para GitHub
+git push origin feature-login
+
+7. Criar Pull Request no GitHub
+
+Acesse o repositório no GitHub.
+O GitHub normalmente exibirá:
+Compare & pull request
+Clique nele.
+
+8. Configurar PR
+
+Você verá:
+base: main
+compare: feature-login
+
+Significa:
+alterações da branch feature-login
+irão para a branch main
+
+9. Preencher PR
+Título
+Adiciona tela de login
+Descrição
+Implementa autenticação inicial do usuário.
+10. Criar PR
+
+Clique em:
+Create pull request
+Como GERENCIAR Pull Requests
+1. Revisar código
+
+No PR é possível:
+visualizar arquivos alterados
+comentar linhas específicas
+sugerir melhorias
+
+2. Aprovar PR
+Botão: Review changes
+
+Opções:
+Approve
+Request changes
+Comment
+
+3. Resolver conflitos
+Se aparecer:
+This branch has conflicts
+
+Você deve:
+fazer merge da branch principal
+resolver conflitos
+enviar novamente
+
+Exemplo:
+git checkout feature-login
+git pull origin main
+
+Resolver conflitos:
+git add .
+git commit -m "Resolve conflitos"
+git push
+
+4. Atualizar PR
+Novos commits enviados para a mesma branch atualizam automaticamente o PR.
+Exemplo:
+git add .
+git commit -m "Ajusta validação"
+git push
+
+5. Fazer merge do PR
+
+Após aprovação:
+Merge pull request
+
+Depois:
+Confirm merge
+
+6. Excluir branch após merge
+O GitHub normalmente sugere:
+
+Delete branch
+Fluxo visual completo
+main
+   |
+   |---- feature-login
+            |
+         commits
+            |
+      Pull Request
+            |
+        Code Review
+            |
+      Resolve conflitos
+            |
+           Merge
+            |
+           main
+Relacionar Issues ao PR
+
+Na descrição:
+
+Fixes #5
+
+Quando o merge ocorrer:
+
+a issue #5 será fechada automaticamente.
+Boas práticas para PRs
+Boa prática	Motivo
+Criar branch por feature	organização
+PRs pequenos	revisão mais fácil
+Mensagens claras	entendimento rápido
+Fazer pull antes	evitar conflitos
+Revisar antes do merge	qualidade
+Exemplo completo real
+git checkout -b feature-cadastro
+
+echo "Cadastro usuários" > cadastro.txt
+git add .
+git commit -m "Cria tela cadastro"
+git push origin feature-cadastro
+
+Depois:
+abrir GitHub
+clicar em Compare & pull request
+criar PR
+revisar
+mergear

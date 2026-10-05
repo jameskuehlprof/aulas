@@ -1,0 +1,132 @@
+Aula 8 – Projeto Final   HTML + CSS + JavaScript
+Objetivos
+Ao final desta atividade, o aluno deverá ser capaz de:
+•	Consolidar os conhecimentos adquiridos durante o módulo de JavaScript.
+•	Desenvolver uma aplicação web funcional utilizando HTML, CSS e JavaScript.
+•	Aplicar conceitos de programação, manipulação do DOM e consumo de APIs.
+•	Organizar o código de forma estruturada e legível.
+•	Apresentar e explicar o funcionamento da aplicação desenvolvida.
+Descrição do trabalho final
+Cada aluno (ou grupo) deverá desenvolver uma aplicação web completa utilizando:
+HTML, CSS Externo e JavaScript Externo
+O projeto deverá demonstrar os conhecimentos trabalhados durante todas as aulas do módulo de JavaScript.
+
+Conteúdos Obrigatórios
+O projeto deverá utilizar obrigatoriamente:
+
+Variáveis: Utilizar variáveis para armazenamento e manipulação de dados.
+Exemplos: Nome, CEP, Cidade, Lista de tarefas e Dados retornados por APIs.
+
+Estruturas Condicionais
+Utilizar pelo menos uma estrutura de decisão.
+Exemplos: if, else, else if
+
+Estruturas de Repetição
+Utilizar pelo menos uma estrutura de repetição.
+Exemplos: for, while, forEach()
+
+Funções
+Criar funções para organizar a lógica da aplicação.
+Exemplos: buscarDados(), adicionarItem(), removerItem() e calcularMedia()
+
+Manipulação do DOM
+Utilizar JavaScript para alterar elementos da página.
+Exemplos: innerHTML, textContent, createElement(), appendChild()
+
+Eventos
+Utilizar eventos de interação do usuário como: click, keyup, change e submit.
+
+Objetos e Arrays
+Utilizar pelo menos: 1 objeto e 1 array
+
+Consumo de API
+Utilizar pelo menos uma API pública.
+Exemplos: ViaCEP, JSONPlaceholder, OpenWeather, The Movie Database (TMDB) e APIs livres de escolha do aluno
+
+Fetch API
+Utilizar: fetch() e async/await
+JSON
+Utilizar: JSON.parse() ou JSON.stringify()
+
+Sugestões de Projetos
+O aluno poderá escolher uma das opções abaixo ou propor uma ideia própria aprovada pelo professor.
+Opção 1 – Lista de Tarefas (To-do List)
+Funcionalidades sugeridas:
+•	Adicionar tarefa
+•	Remover tarefa
+•	Marcar como concluída
+•	Exibir quantidade de tarefas
+
+Opção 2 – Sistema de Consulta de CEP
+Funcionalidades sugeridas:
+•	Buscar CEP
+•	Exibir endereço completo
+•	Mostrar data e hora da consulta
+•	Exibir JSON retornado pela API
+Opção 3 – Catálogo de Filmes
+Funcionalidades sugeridas:
+•	Buscar filmes
+•	Exibir capa
+•	Exibir descrição
+•	Filtrar por nome
+Opção 4 – Aplicação de Clima
+Funcionalidades sugeridas:
+•	Buscar cidade
+•	Mostrar temperatura
+•	Mostrar umidade
+•	Mostrar condição climática
+Opção 5 – Projeto Livre
+O aluno poderá propor uma aplicação própria contendo os requisitos obrigatórios da atividade.
+Requisitos Técnicos
+O projeto deverá possuir:
+Estrutura de Arquivos
+index.html
+style.css
+script.js
+Interface
+•	Layout organizado
+•	Cores adequadas
+•	Boa usabilidade
+•	Responsividade básica
+Código
+•	Comentários explicativos
+•	Indentação correta
+•	Nomes de variáveis significativos
+•	Separação adequada das responsabilidades
+
+Apresentação do Projeto
+Cada aluno ou grupo terá entre 5 e 10 minutos para apresentar:
+1.	Objetivo do projeto
+2.	Funcionalidades implementadas
+3.	Demonstração prática
+4.	Explicação das principais partes do código
+5.	APIs utilizadas
+
+Critérios de Avaliação
+Critério	Pontos
+Organização do código	2,0
+Funcionamento da aplicação	3,0
+Uso correto de JavaScript	2,0
+Manipulação do DOM e Eventos	1,0
+Consumo de API	1,0
+Apresentação do projeto	1,0
+Total	10,0
+
+Critérios de Destaque (Bônus)
+Projetos que implementarem recursos extras poderão receber até 1,0 ponto bônus:
+•	Tema escuro/claro
+•	Armazenamento Local (localStorage)
+•	Responsividade avançada
+•	Múltiplas APIs
+•	Validações extras
+•	Funcionalidades criativas
+Entrega
+O aluno (ou grupo) deverá entregar: 
+•	Arquivo HTML
+•	Arquivo CSS
+•	Arquivo JavaScript
+•	Arquivos complementares (imagens, ícones etc.)
+
+Todos os arquivos deverão estar organizados em uma única pasta compactada (.zip).
+
+Data de entrega: 22/06/2026

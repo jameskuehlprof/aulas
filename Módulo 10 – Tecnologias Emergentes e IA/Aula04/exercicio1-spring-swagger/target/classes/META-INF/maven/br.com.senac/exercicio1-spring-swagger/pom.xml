@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.5</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>br.com.senac</groupId>
+  <artifactId>exercicio1-spring-swagger</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>Exercicio 1 - Consumindo uma API publica (Spring + Swagger)</name>
+  <description>
+    Modulo 10 - Tecnologias Emergentes e IA. Exercicio 1: consumir a API
+    publica agify.io usando HttpClient nativo (Java 11+) por dentro de um
+    endpoint REST do Spring Boot, documentado e testavel via Swagger UI
+    (springdoc-openapi).
+  </description>
+
+  <properties>
+    <java.version>17</java.version>
+  </properties>
+
+  <dependencies>
+    <!-- Endpoint REST (controller) + servidor embutido (Tomcat) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!--
+      Gera a pagina do Swagger UI automaticamente a partir dos controllers,
+      sem precisar escrever o contrato OpenAPI (YAML/JSON) na mao.
+      Acesso depois de rodar: http://localhost:8080/swagger-ui.html
+    -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.5.0</version>
+    </dependency>
+
+    <!-- Testes (JUnit 5 + Mockito), ja vem com o starter-test do Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>exercicio1-spring-swagger</finalName>
+    <plugins>
+      <!--
+        Empacota como jar executavel (java -jar ...) e permite
+        "mvn spring-boot:run" direto no terminal.
+      -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

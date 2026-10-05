@@ -1,0 +1,21 @@
+git config --global user.name "James Silva" - Define o nome do autor que aparecerá nos commits.
+git config --global user.email james.silva@email.com - Define o e-mail do autor que aparecerá nos commits.
+mkdir meu-projeto - Cria pasta para o projeto
+cd meu-projeto - Acessa pasta
+git init - Inicializar o repositório Git. Isso cria uma subpasta oculta chamada .git, onde o Git guarda todo o histórico e metadados do repositório
+git add arquivo.txt ou git add .  - Adicionar arquivos ao controle de versão
+git status – Verificar o status do arquivo
+git commit -m "Primeiro commit" - Registrar a primeira versão (commit)
+git log – Verificar log de alterações
+git checkout - trocar de Branch, restaurar arquivos e acessar commits antigos
+git checkout -b develop - Cria Branch
+git checkout master - Usa a branch
+git branch -d develop - Exclui branch
+git switch develop - Troca branch, 
+git restore arquivo.txt - Restaura a última versão que está no GIT
+git branch - Exibe Branch existentes
+git revert - git revert HASH_DO_COMMIT (desfazer um commit sem apagar o histórico – o hash ocorre no momento do commit. Utiliza-se git log para descobrir)
+git restore --staged arquivo.txt - Apenas remove ele da área de preparação do Git (“staged”) quando já havia adicionado
+git restore arquivo.txt - Volta condição original
+git rm arquivo.txt - Exclui arquivo
+echo "teste" > arquivo.txt - cria o arquivo arquivo.txt (se não existir), grava o conteúdo teste e sobrescreve o conteúdo anterior do arquivo, se ele já existir

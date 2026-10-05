@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arena de IA – Aula 05</title>
+<style>
+  :root { --verde: #1e5c2e; --fundo: #f4f7f5; --borda: #d7e2da; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--fundo); color: #222; }
+  header { background: var(--verde); color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+  header a { color: #fff; opacity: .85; font-size: 14px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tabs button { border: 1px solid var(--borda); background: #fff; padding: 8px 16px; border-radius: 20px; cursor: pointer; }
+  .tabs button.ativa { background: var(--verde); color: #fff; border-color: var(--verde); }
+  section { display: none; } section.ativa { display: block; }
+  textarea, input, select { width: 100%; padding: 10px; border: 1px solid var(--borda); border-radius: 8px; font: inherit; }
+  textarea { min-height: 80px; resize: vertical; }
+  .linha { display: flex; gap: 10px; margin: 10px 0; align-items: center; }
+  .btn { background: var(--verde); color: #fff; border: 0; padding: 10px 18px; border-radius: 8px; cursor: pointer; font: inherit; }
+  .btn:disabled { opacity: .5; cursor: wait; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: #fff; border: 1px solid var(--borda); border-radius: 12px; padding: 14px; min-height: 180px; position: relative; }
+  .card h3 { margin: 0 0 8px; font-size: 15px; text-transform: capitalize; }
+  .card .meta { font-size: 12px; color: #666; margin-top: 8px; }
+  .card.vencedor { border-color: var(--verde); box-shadow: 0 0 0 2px var(--verde) inset; }
+  .card.vencedor::after { content: "⚡ mais rápido"; position: absolute; top: 10px; right: 10px; font-size: 11px; color: var(--verde); }
+  .chat { background: #fff; border: 1px solid var(--borda); border-radius: 12px; padding: 14px; height: 380px; overflow-y: auto; }
+  .msg { max-width: 75%; padding: 8px 12px; border-radius: 12px; margin: 6px 0; white-space: pre-wrap; }
+  .msg.eu { background: #e3f2e7; margin-left: auto; }
+  .msg.lia { background: #f1f1f1; }
+  .erro { color: #b00020; }
+  pre { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<header>
+  <strong>🏟️ Arena de IA Generativa — Aula 05</strong>
+  <a href="/swagger-ui.html" target="_blank">Swagger UI ↗</a>
+</header>
+<main>
+  <div class="tabs">
+    <button class="ativa" data-tab="arena">Arena (3 provedores)</button>
+    <button data-tab="atendimento">Atendimento (Desafio)</button>
+  </div>
+
+  <!-- ================= ARENA ================= -->
+  <section id="arena" class="ativa">
+    <p>Digite uma pergunta. Ela será enviada <b>ao mesmo tempo</b> para Claude, ChatGPT e Gemini pelo endpoint <code>POST /api/arena</code>.</p>
+    <textarea id="perguntaArena" placeholder="Ex.: Explique o que é uma API REST para quem está começando em Java."></textarea>
+    <div class="linha">
+      <button class="btn" id="btnArena">Enviar para a arena</button>
+      <span id="statusArena"></span>
+    </div>
+    <div class="cards" id="cardsArena"></div>
+  </section>
+
+  <!-- ================= ATENDIMENTO ================= -->
+  <section id="atendimento">
+    <p>Assistente <b>Lia (TechFix)</b> — endpoint <code>POST /api/atendimento/{sessaoId}</code>. Teste perguntas dentro e fora do escopo e veja se ela "lembra" do que foi dito.</p>
+    <div class="linha">
+      <label>Sessão: <input id="sessaoId" value="turma-entra21" style="width:200px"></label>
+      <label>Provedor:
+        <select id="provedorAtend">
+          <option value="claude">Claude</option>
+          <option value="openai">ChatGPT</option>
+          <option value="gemini">Gemini</option>
+        </select>
+      </label>
+      <button class="btn" id="btnLimpar" style="background:#777">Encerrar sessão</button>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="linha">
+      <input id="msgAtend" placeholder="Digite sua mensagem e pressione Enter">
+      <button class="btn" id="btnAtend">Enviar</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  // ---------- abas
+  document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.tabs button, section').forEach(e => e.classList.remove('ativa'));
+    b.classList.add('ativa'); document.getElementById(b.dataset.tab).classList.add('ativa');
+  });
+
+  async function post(url, body) {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const json = await r.json();
+    if (!r.ok) throw new Error(json.detail || json.title || ('HTTP ' + r.status));
+    return json;
+  }
+
+  // ---------- arena
+  const btnArena = document.getElementById('btnArena');
+  btnArena.onclick = async () => {
+    const mensagem = document.getElementById('perguntaArena').value.trim();
+    if (!mensagem) return;
+    btnArena.disabled = true;
+    document.getElementById('statusArena').textContent = 'Consultando os 3 provedores...';
+    document.getElementById('cardsArena').innerHTML = '';
+    try {
+      const res = await post('/api/arena', { mensagem });
+      document.getElementById('statusArena').textContent = 'Mais rápido: ' + res.maisRapido;
+      document.getElementById('cardsArena').innerHTML = res.respostas.map(r => `
+        <div class="card ${r.provedor === res.maisRapido ? 'vencedor' : ''}">
+          <h3>${r.provedor}</h3>
+          <pre>${escapeHtml(r.texto)}</pre>
+          <div class="meta">modelo: ${r.modelo} · ${r.tempoMs >= 0 ? r.tempoMs + ' ms' : 'falhou'} · tokens: ${r.tokensEntrada} in / ${r.tokensSaida} out</div>
+        </div>`).join('');
+    } catch (e) {
+      document.getElementById('statusArena').innerHTML = '<span class="erro">' + e.message + '</span>';
+    } finally { btnArena.disabled = false; }
+  };
+
+  // ---------- atendimento
+  const chat = document.getElementById('chat');
+  function bolha(texto, quem) {
+    const d = document.createElement('div'); d.className = 'msg ' + quem; d.textContent = texto;
+    chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
+  }
+  async function enviarAtend() {
+    const input = document.getElementById('msgAtend');
+    const mensagem = input.value.trim(); if (!mensagem) return;
+    input.value = ''; bolha(mensagem, 'eu');
+    try {
+      const res = await post('/api/atendimento/' + encodeURIComponent(document.getElementById('sessaoId').value),
+        { provedor: document.getElementById('provedorAtend').value, mensagem });
+      bolha(res.resposta + `\n\n(${res.detalhes.provedor} · ${res.detalhes.tempoMs} ms · histórico: ${res.mensagensNoHistorico} msgs)`, 'lia');
+    } catch (e) { bolha('Erro: ' + e.message, 'lia erro'); }
+  }
+  document.getElementById('btnAtend').onclick = enviarAtend;
+  document.getElementById('msgAtend').addEventListener('keydown', e => { if (e.key === 'Enter') enviarAtend(); });
+  document.getElementById('btnLimpar').onclick = async () => {
+    await fetch('/api/atendimento/' + encodeURIComponent(document.getElementById('sessaoId').value), { method: 'DELETE' });
+    chat.innerHTML = ''; bolha('Sessão encerrada. Comece uma nova conversa.', 'lia');
+  };
+
+  function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
+</script>
+</body>
+</html>

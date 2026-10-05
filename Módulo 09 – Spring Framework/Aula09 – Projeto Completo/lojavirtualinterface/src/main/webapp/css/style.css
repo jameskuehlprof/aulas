@@ -1,0 +1,68 @@
+/* =========================================================
+   LojavirtualInterface - Folha de estilos propria
+   (Aula 09 - interface grafica Java Web para a API do lojavirtual)
+
+   Mesma estrategia do sistemacad (Modulo 08): Bootstrap 5 via CDN para
+   os componentes prontos, e este arquivo so' faz o "reskin" das CSS
+   variables do Bootstrap + pequenos ajustes que ele nao cobre. Cor
+   diferente do sistemacad (verde em vez de azul) so' para ficar visualmente
+   claro, numa demonstracao, qual das duas aplicacoes esta na tela.
+   ========================================================= */
+
+:root {
+    --bs-primary: #1f6f4a;
+    --bs-primary-rgb: 31, 111, 74;
+    --bs-link-color: #1f6f4a;
+    --bs-link-color-rgb: 31, 111, 74;
+    --bs-link-hover-color: #17563a;
+    --lojavirtual-verde-claro: #eaf6ef;
+}
+
+body {
+    background-color: #f7faf8;
+}
+
+.table thead th {
+    background-color: var(--lojavirtual-verde-claro);
+    color: var(--bs-primary);
+    border-bottom-width: 2px;
+    white-space: nowrap;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--lojavirtual-verde-claro);
+}
+
+.card {
+    border: 1px solid #e2e8e4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+    letter-spacing: 0.4px;
+}
+
+/* Cards da tela inicial (index.jsp) */
+.card-recurso {
+    height: 100%;
+    transition: transform 0.1s ease-in-out;
+}
+
+.card-recurso:hover {
+    transform: translateY(-2px);
+}
+
+/* Linhas dinamicas de item do pedido (pedidos/form.jsp) */
+.subtotal-linha {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+#totalPedido {
+    color: var(--bs-primary);
+}
+
+footer.text-muted {
+    border-top: 1px solid #e2e8e4;
+}

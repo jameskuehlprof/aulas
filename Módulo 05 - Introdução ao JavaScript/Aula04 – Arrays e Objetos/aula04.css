@@ -1,0 +1,125 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Página */
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#f4f6f9;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+/* Card principal */
+.container{
+    width:100%;
+    max-width:900px;
+    background:#ffffff;
+    border-radius:16px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Título */
+h1{
+    text-align:center;
+    color:#1f2937;
+    margin-bottom:30px;
+    font-size:2rem;
+    font-weight:600;
+}
+
+/* Formulário */
+.formulario{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+/* Campos */
+input{
+    flex:1;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:15px;
+    transition:0.3s;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* Botão */
+button{
+    padding:14px 25px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* Lista de alunos */
+#resultado{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* Card do aluno */
+.aluno{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f9fafb;
+    border-left:4px solid #2563eb;
+    padding:15px 20px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.aluno:hover{
+    background:#eff6ff;
+}
+
+.nome{
+    font-weight:600;
+    color:#111827;
+}
+
+.idade{
+    color:#6b7280;
+}
+
+/* Responsivo */
+@media(max-width:768px){
+
+    .container{
+        padding:25px;
+    }
+
+    .formulario{
+        flex-direction:column;
+    }
+
+    button{
+        width:100%;
+    }
+}

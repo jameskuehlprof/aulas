@@ -1,0 +1,268 @@
+
+GUIA COMPLETO DE COMANDOS GIT COM EXEMPLOS
+==========================================
+
+1. CONFIGURAÇÃO INICIAL
+-----------------------
+
+Verificar versão do Git:
+git --version
+
+Configurar nome:
+git config --global user.name "James"
+
+Configurar e-mail:
+git config --global user.email "email@exemplo.com"
+
+Listar configurações:
+git config --list
+
+2. INICIANDO REPOSITÓRIOS
+-------------------------
+
+Inicializar repositório:
+git init
+
+Clonar repositório:
+git clone https://github.com/user/repositorio.git
+
+Clonar branch específica:
+git clone -b develop https://github.com/user/repositorio.git
+
+3. STATUS E INFORMAÇÕES
+-----------------------
+
+Verificar status:
+git status
+
+Ver histórico resumido:
+git log --oneline
+
+Ver histórico detalhado:
+git log
+
+Ver diferenças:
+git diff
+
+Ver diferenças staged:
+git diff --staged
+
+4. ADICIONAR ARQUIVOS
+---------------------
+
+Adicionar arquivo:
+git add arquivo.txt
+
+Adicionar todos arquivos:
+git add .
+
+Adicionar vários arquivos:
+git add arquivo1.txt arquivo2.txt
+
+5. COMMITS
+----------
+
+Criar commit:
+git commit -m "Primeiro commit"
+
+Commit adicionando arquivos rastreados:
+git commit -am "Atualização"
+
+Alterar última mensagem:
+git commit --amend -m "Nova mensagem"
+
+6. BRANCHES
+-----------
+
+Criar branch:
+git branch nova-feature
+
+Listar branches:
+git branch
+
+Trocar branch:
+git checkout nova-feature
+
+Criar e trocar:
+git checkout -b nova-feature
+
+Usando switch:
+git switch nova-feature
+
+Criar e trocar com switch:
+git switch -c nova-feature
+
+Excluir branch:
+git branch -d nova-feature
+
+Excluir branch forçado:
+git branch -D nova-feature
+
+7. MERGE
+--------
+
+Mesclar branch:
+git merge nova-feature
+
+Exemplo:
+git checkout main
+git merge develop
+
+8. REPOSITÓRIO REMOTO
+---------------------
+
+Adicionar remoto:
+git remote add origin https://github.com/user/projeto.git
+
+Listar remotos:
+git remote -v
+
+Alterar URL:
+git remote set-url origin https://github.com/user/novo.git
+
+9. ENVIAR E BAIXAR ALTERAÇÕES
+-----------------------------
+
+Enviar commits:
+git push origin main
+
+Primeiro push:
+git push -u origin main
+
+Baixar alterações:
+git pull origin main
+
+Buscar alterações sem mesclar:
+git fetch
+
+10. RESTORE E RESET
+-------------------
+
+Remover do stage:
+git restore --staged arquivo.txt
+
+Restaurar arquivo:
+git restore arquivo.txt
+
+Resetar commit mantendo arquivos:
+git reset --soft HEAD~1
+
+Resetar commit removendo alterações:
+git reset --hard HEAD~1
+
+11. REVERT
+----------
+
+Desfazer commit criando novo commit:
+git revert HEAD
+
+Reverter commit específico:
+git revert abc123
+
+12. STASH
+----------
+
+Salvar alterações temporariamente:
+git stash
+
+Listar stash:
+git stash list
+
+Recuperar stash:
+git stash apply
+
+Recuperar e remover stash:
+git stash pop
+
+13. TAGS
+--------
+
+Criar tag:
+git tag v1.0
+
+Enviar tags:
+git push origin --tags
+
+14. REMOVER ARQUIVOS
+--------------------
+
+Remover arquivo:
+git rm arquivo.txt
+
+Remover do Git sem apagar local:
+git rm --cached arquivo.txt
+
+15. IGNORAR ARQUIVOS
+--------------------
+
+Criar .gitignore:
+echo "*.log" > .gitignore
+
+Ignorar pasta:
+node_modules/
+
+16. COMANDOS ÚTEIS
+------------------
+
+Ver quem alterou linhas:
+git blame arquivo.txt
+
+Pesquisar no histórico:
+git grep "texto"
+
+Ver referência curta:
+git rev-parse --short HEAD
+
+Limpar arquivos não rastreados:
+git clean -f
+
+17. EXEMPLO COMPLETO DE FLUXO
+-----------------------------
+
+git init
+echo "Olá Git" > app.txt
+git add app.txt
+git commit -m "Primeiro commit"
+git branch develop
+git checkout develop
+echo "Nova funcionalidade" >> app.txt
+git add .
+git commit -m "Nova funcionalidade"
+git checkout main
+git merge develop
+git push origin main
+
+18. PRINCIPAIS ERROS
+--------------------
+
+Erro:
+pathspec 'arquivo.txt' did not match any file(s) known to git
+
+Causa:
+Arquivo não existe ou não está staged.
+
+Erro:
+fatal: not a git repository
+
+Causa:
+Pasta não possui repositório Git inicializado.
+
+Erro:
+merge conflict
+
+Causa:
+Conflito entre alterações de branches diferentes.
+
+19. COMANDOS MAIS UTILIZADOS NO DIA A DIA
+-----------------------------------------
+
+git status
+git add .
+git commit -m "mensagem"
+git pull
+git push
+git checkout -b nova-branch
+git merge branch
+git log --oneline
+
+FIM DO GUIA

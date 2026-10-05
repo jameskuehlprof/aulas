@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Perfil Dinâmico</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cartão de Perfil Dinâmico</h1>
+        <div class="formulario">
+            <label>Nome:</label>
+            <input type="text" id="nome">
+            <label>Profissão:</label>
+            <input type="text" id="profissao">
+            <label>Bio:</label>
+            <textarea id="bio"></textarea>
+            <button onclick="atualizarPerfil()">
+                Atualizar Perfil
+            </button>
+        </div>
+        <div class="cartao">
+            <h2 id="nomePerfil">Seu Nome</h2>
+            <h3 id="profissaoPerfil">Sua Profissão</h3>
+            <p id="bioPerfil">
+                Sua biografia aparecerá aqui.
+            </p>
+        </div>
+    </div>
+    <script src="perfil.js"></script>
+</body>
+</html>

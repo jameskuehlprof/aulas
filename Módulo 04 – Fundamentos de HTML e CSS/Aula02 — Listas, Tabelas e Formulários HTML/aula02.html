@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!--<style>
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>-->
+    <link rel="stylesheet" href= "estilo.css" > 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Completo HTML</title>
+</head>
+<body>  
+    teste de centralização
+    <h1>Sistema de Cadastro de Usuários</h1>
+    <!-- LISTAS -->
+    <div class="container">
+        <h2>1. Exemplos de Listas HTML</h2>
+        <h3>Lista Não Ordenada (ul)</h3>
+        <ul class="circle">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <h3>Lista Ordenada (ol)</h3>
+        <ol type="i">
+            <li>Criar estrutura HTML</li>
+            <li>Adicionar estilos CSS</li>
+            <li>Testar no navegador</li>
+        </ol>
+    </div>
+    <!-- TABELA -->
+    <div class="container">
+        <h2>2. Tabela de Usuários</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Cidade</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>João</td>
+                <td>joao@email.com</td>
+                <td>Florianópolis</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Maria</td>
+                <td>maria@email.com</td>
+                <td>Blumenau</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Carlos</td>
+                <td>carlos@email.com</td>
+                <td>Joinville</td>
+            </tr>
+        </table>
+    </div>
+    <!-- FORMULÁRIO -->
+    <div class="container">
+        <h2>3. Formulário de Cadastro</h2>
+        <!-- 
+            method="GET"
+            Os dados aparecem na URL
+        -->
+        <form method="POST" action="#"> <!--Vincular com backend JAva-->
+            <label>Nome:</label>
+            <input type="text" name="nome" placeholder="Digite seu nome">
+            <label>E-mail:</label>
+            <input type="email" name="email" placeholder="Digite seu e-mail">
+            <label>Senha:</label>
+            <input type="password" name="senha" placeholder="Digite sua senha">
+            <label>Cidade:</label>
+            <select name="cidade">
+                <option>Florianópolis</option>
+                <option>Blumenau</option>
+                <option>Joinville</option>
+                <option>Chapecó</option>
+            </select>
+            <label>Sexo:</label>
+            <input type="radio" name="sexo" value="Masculino"> Masculino
+            <input type="radio" name="sexo" value="Feminino"> Feminino
+            <br><br>
+            <label>Interesses:</label>
+            <br>
+            <input type="checkbox" name="interesse" value="HTML"> HTML
+            <input type="checkbox" name="interesse" value="CSS"> CSS
+            <input type="checkbox" name="interesse" value="JavaScript"> JavaScript
+            <br><br>
+            <label>Observações</label>
+            
+            <textarea name="observacao"> </textarea>
+            <br><br>
+            <input class="btn1" type="submit" value="Cadastrar">
+            <input class="btn2" type="reset" value="Limpar">
+        </form>
+    </div>
+    <!-- GET E POST -->
+    <div class="container">
+        <h2>4. Métodos GET e POST</h2>
+        <div class="metodo">
+            <h3>Método GET</h3>
+            <p>
+                O método GET envia os dados pela URL.
+            </p>
+            <p>
+                Exemplo:
+            </p>
+            <code>
+                site.com?nome=joao
+            </code>
+            <ul>
+                <li>Mais usado em pesquisas</li>
+                <li>Dados visíveis na URL</li>
+                <li>Menor segurança</li>
+            </ul>
+        </div>
+        <div class="metodo">
+            <h3>Método POST</h3>
+            <p>
+                O método POST envia os dados ocultos no corpo da requisição.
+            </p>
+            <ul>
+                <li>Mais seguro</li>
+                <li>Usado para cadastros e login</li>
+                <li>Dados não aparecem na URL</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

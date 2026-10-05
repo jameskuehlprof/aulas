@@ -1,0 +1,14 @@
+body{font-family:Arial;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+margin-top:60px;}
+.card{background:white;
+padding:20px;
+width:300px;
+border-radius:10px;
+box-shadow:0 0 10px gray;}
+input{width:100%;
+margin-bottom:10px;
+padding:10px;}
+button{width:100%;padding:10px;}

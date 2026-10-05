@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Carro {
+    String nome;
+    String montadora;
+    double valor;
+    Carro(String nome, String montadora, double valor) {
+        this.nome = nome;
+        this.montadora = montadora;
+        this.valor = valor;
+    }
+    void mostrarInfo() {
+        System.out.println("Nome: " + nome + ", Montadora: " + montadora + ", Valor: " + valor);
+    }
+
+    void mostrarsimples() {
+        System.out.println("Nome: " + nome);
+    }
+}
+public class CadastroCarros {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        ArrayList<Carro> listaCarros = new ArrayList<>();
+        int opcao;
+        do {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1 - Incluir");
+            System.out.println("2 - Listar");
+            System.out.println("3 - Remover");
+            System.out.println("4 - Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = entrada.nextInt();
+            entrada.nextLine(); // limpar buffer
+            switch (opcao) {
+                case 1:
+                    System.out.print("Nome: ");
+                    String nome = entrada.nextLine();
+                    System.out.print("Montadora: ");
+                    String montadora = entrada.nextLine();
+                    System.out.print("Valor: ");
+                    double valor = entrada.nextDouble();
+                    listaCarros.add(new Carro(nome, montadora, valor));
+                    System.out.println("Carro cadastrado com sucesso!");
+                    
+                    break;
+                case 2:
+                    System.out.println("\n--- Lista de Carros ---");
+                    for (Carro a : listaCarros) {
+                        a.mostrarInfo();
+                       // a.mostrarsimples();
+                        System.out.println("-------------------");
+                    }
+                    break;
+                case 3:
+                    System.out.print("Digite o nome para remover: ");
+                    String nomeRemover = entrada.nextLine();
+                    boolean removido = false;
+                    for (Carro c : listaCarros) {
+                        if (c.nome.equalsIgnoreCase(nomeRemover)) {
+                            listaCarros.remove(c);
+                            removido = true;
+                            break;
+                        }
+                    }
+                    if (removido) {
+                        System.out.println("Carro removido com sucesso!");
+                    } else {
+                        System.out.println("Carro não encontrado.");
+                    }
+                    break;
+                case 4:
+                    System.out.println("Encerrando o sistema...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        } while (opcao != 4);
+        entrada.close();
+    }
+}

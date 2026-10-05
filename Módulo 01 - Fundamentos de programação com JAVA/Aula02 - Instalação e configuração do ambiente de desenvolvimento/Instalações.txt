@@ -1,0 +1,20 @@
+Resumo:
+
+1)BAIXAR o JAVA SDK e instalar: https://www.oracle.com/br/java/technologies/downloads/#jdk25-windows - x64 Installer
+Após a instalação configurar as variáveis de ambiente do windows onde foi instalado:
+JAVa_HOME: C:\Program Files\Java\jdk-25.0.2
+PATH: C:\Program Files\Java\jdk-25.0.2\bin
+Para testar se funcionou o JAVA, após a instalação e configuração o comando: java -version  no prompt de comando deverá trazer a versão do JAVA.
+
+2)IDE do Eclipse : https://eclipseide.org/. Na hora de instalar a versão do eclipse optar pela Enterprise que possui mais recursos para usar com os alunos.
+Como segunda opção podemos deixar instalado o VS CODE: https://code.visualstudio.com/download
+
+3)Apache Tomcat: https://tomcat.apache.org/download-11.cgi
+
+4)MySQL: https://dev.mysql.com/downloads/workbench/
+
+5)GIT: https://git-scm.com/install/windows 
+
+6)Visual Studio Code: Extension Pack for Java - @id:vscjava.vscode-java-pack
+
+7)IntelliJ IDEA - https://www.jetbrains.com/pt-br/idea/

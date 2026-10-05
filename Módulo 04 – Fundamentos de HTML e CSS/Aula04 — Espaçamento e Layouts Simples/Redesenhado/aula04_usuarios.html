@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuários — Sistema Administrativo</title>
+  <link rel="stylesheet" href="estilo04.css">
+</head>
+<body>
+<div class="shell">
+
+  <header>
+    <div class="header-inner">
+      <img src="logo.png" alt="Logo" class="logo-site">
+      <span class="header-title">Sistema <span>Admin</span></span>
+      <span class="header-badge">Java Web</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="aula04_Dashboard.html">
+      <span class="nav-icon">⊞</span> Dashboard
+    </a>
+    <a href="aula04_usuarios.html" class="active">
+      <span class="nav-icon">◉</span> Usuários
+    </a>
+    <a href="#">
+      <span class="nav-icon">▦</span> Produtos
+    </a>
+    <a href="#">
+      <span class="nav-icon">◈</span> Relatórios
+    </a>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h2>Usuários</h2>
+        <p class="subtitle">Gerenciamento de usuários do sistema</p>
+      </div>
+      <a href="#" class="btn btn-primary">+ Novo Usuário</a>
+    </div>
+
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 28px;">
+      <div class="card card--blue">
+        <h3>Total</h3>
+        <div class="card-value">150</div>
+        <p>usuários cadastrados</p>
+      </div>
+      <div class="card card--green">
+        <h3>Ativos</h3>
+        <div class="card-value">132</div>
+        <p>usuários ativos</p>
+      </div>
+      <div class="card card--yellow">
+        <h3>Pendentes</h3>
+        <div class="card-value">12</div>
+        <p>aguardando aprovação</p>
+      </div>
+      <div class="card card--red">
+        <h3>Inativos</h3>
+        <div class="card-value">6</div>
+        <p>usuários inativos</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-header">
+        <h3>Lista de Usuários</h3>
+        <div style="display:flex; gap:8px;">
+          <a href="#" class="btn btn-ghost">↓ Exportar</a>
+          <a href="#" class="btn btn-primary">+ Adicionar</a>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Função</th>
+            <th>Cadastro</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="avatar" style="background: linear-gradient(135deg,#4f8ef7,#7c5cfc)">JA</span>
+              João Alves
+            </td>
+            <td style="color:var(--muted)">joao.alves@empresa.com</td>
+            <td><span class="badge badge-blue">Admin</span></td>
+            <td style="color:var(--muted)">10/01/2026</td>
+            <td><span class="badge badge-green">Ativo</span></td>
+            <td>
+              <a href="#" class="btn btn-ghost" style="padding:5px 12px; font-size:0.78rem;">Editar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="avatar" style="background: linear-gradient(135deg,#3ecf8e,#1aab6d)">MS</span>
+              Maria Silva
+            </td>
+            <td style="color:var(--muted)">maria.silva@empresa.com</td>
+            <td><span class="badge badge-green">Editor</span></td>
+            <td style="color:var(--muted)">15/01/2026</td>
+            <td><span class="badge badge-green">Ativo</span></td>
+            <td>
+              <a href="#" class="btn btn-ghost" style="padding:5px 12px; font-size:0.78rem;">Editar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="avatar" style="background: linear-gradient(135deg,#f7c948,#e8a820)">PC</span>
+              Pedro Costa
+            </td>
+            <td style="color:var(--muted)">pedro.costa@empresa.com</td>
+            <td><span class="badge badge-blue">Editor</span></td>
+            <td style="color:var(--muted)">22/02/2026</td>
+            <td><span class="badge badge-yellow">Pendente</span></td>
+            <td>
+              <a href="#" class="btn btn-ghost" style="padding:5px 12px; font-size:0.78rem;">Editar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="avatar" style="background: linear-gradient(135deg,#f76464,#e03030)">AL</span>
+              Ana Lima
+            </td>
+            <td style="color:var(--muted)">ana.lima@empresa.com</td>
+            <td><span class="badge badge-green">Viewer</span></td>
+            <td style="color:var(--muted)">03/03/2026</td>
+            <td><span class="badge badge-green">Ativo</span></td>
+            <td>
+              <a href="#" class="btn btn-ghost" style="padding:5px 12px; font-size:0.78rem;">Editar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="avatar" style="background: linear-gradient(135deg,#7c5cfc,#6040e0)">RF</span>
+              Rafael Ferreira
+            </td>
+            <td style="color:var(--muted)">rafael.f@empresa.com</td>
+            <td><span class="badge badge-green">Viewer</span></td>
+            <td style="color:var(--muted)">14/04/2026</td>
+            <td><span class="badge badge-yellow">Pendente</span></td>
+            <td>
+              <a href="#" class="btn btn-ghost" style="padding:5px 12px; font-size:0.78rem;">Editar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p><span class="footer-dot"></span>Sistema online</p>
+    <p>© 2026 — Sistema Java Web</p>
+  </footer>
+
+</div>
+</body>
+</html>

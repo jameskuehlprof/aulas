@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Referência HTML & CSS</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 30px 20px;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 10px 24px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .tab-btn.active {
+      background: #4a90d9;
+      color: #fff;
+      border-color: #4a90d9;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin: 18px 0 8px;
+    }
+
+    .cmd-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .cmd-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .cmd-tag {
+      font-family: monospace;
+      font-size: 13px;
+      color: #1a6abf;
+      word-break: break-all;
+    }
+
+    .cmd-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Referência HTML & CSS</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('html', this)">HTML</button>
+    <button class="tab-btn" onclick="switchTab('css', this)">CSS</button>
+  </div>
+
+  <!-- HTML -->
+  <div id="tab-html" class="tab-content active">
+    <input type="text" placeholder="Buscar tag HTML..." oninput="filtrar('html', this.value)">
+    <div class="cmd-list" id="list-html">
+
+      <div class="section-title">Estrutura</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;!DOCTYPE html&gt;</span><span class="cmd-desc">Declara o tipo do documento como HTML5</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;html&gt;</span><span class="cmd-desc">Elemento raiz da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;head&gt;</span><span class="cmd-desc">Contém metadados, título e links (não aparece na tela)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;body&gt;</span><span class="cmd-desc">Todo o conteúdo visível da página fica aqui</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;meta charset&gt;</span><span class="cmd-desc">Define a codificação de caracteres (geralmente UTF-8)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;title&gt;</span><span class="cmd-desc">Define o título exibido na aba do navegador</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;link&gt;</span><span class="cmd-desc">Liga um arquivo externo à página (ex: CSS)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;script&gt;</span><span class="cmd-desc">Inclui código JavaScript na página</span></div>
+
+      <div class="section-title">Texto</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;h1&gt; a &lt;h6&gt;</span><span class="cmd-desc">Títulos e subtítulos (h1 é o maior, h6 o menor)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;p&gt;</span><span class="cmd-desc">Parágrafo de texto</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;span&gt;</span><span class="cmd-desc">Agrupa texto inline sem quebrar linha</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;strong&gt;</span><span class="cmd-desc">Texto em negrito (importância semântica)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;em&gt;</span><span class="cmd-desc">Texto em itálico (ênfase semântica)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;br&gt;</span><span class="cmd-desc">Quebra de linha</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;hr&gt;</span><span class="cmd-desc">Linha horizontal separadora</span></div>
+
+      <div class="section-title">Listas</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;ul&gt;</span><span class="cmd-desc">Lista não ordenada (com marcadores)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;ol&gt;</span><span class="cmd-desc">Lista ordenada (numerada)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;li&gt;</span><span class="cmd-desc">Item de lista (usado dentro de ul ou ol)</span></div>
+
+      <div class="section-title">Links e mídia</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;a href=""&gt;</span><span class="cmd-desc">Link para outra página ou âncora</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;img src=""&gt;</span><span class="cmd-desc">Exibe uma imagem</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;video&gt;</span><span class="cmd-desc">Incorpora um vídeo na página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;audio&gt;</span><span class="cmd-desc">Incorpora um áudio na página</span></div>
+
+      <div class="section-title">Formulário</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;form&gt;</span><span class="cmd-desc">Define um formulário</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;input&gt;</span><span class="cmd-desc">Campo de entrada (texto, email, senha, número etc.)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;label&gt;</span><span class="cmd-desc">Rótulo para um campo de formulário</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;button&gt;</span><span class="cmd-desc">Botão clicável</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;select&gt;</span><span class="cmd-desc">Lista de opções (dropdown)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;option&gt;</span><span class="cmd-desc">Opção dentro de um select</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;textarea&gt;</span><span class="cmd-desc">Campo de texto multilinha</span></div>
+
+      <div class="section-title">Tabela</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;table&gt;</span><span class="cmd-desc">Define uma tabela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;tr&gt;</span><span class="cmd-desc">Linha da tabela</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;th&gt;</span><span class="cmd-desc">Célula de cabeçalho (negrito e centralizado por padrão)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;td&gt;</span><span class="cmd-desc">Célula de dado comum</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;thead&gt; / &lt;tbody&gt;</span><span class="cmd-desc">Agrupa cabeçalho e corpo da tabela</span></div>
+
+      <div class="section-title">Layout</div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;div&gt;</span><span class="cmd-desc">Bloco genérico para agrupar elementos</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;header&gt;</span><span class="cmd-desc">Cabeçalho da página ou seção</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;nav&gt;</span><span class="cmd-desc">Menu de navegação</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;main&gt;</span><span class="cmd-desc">Conteúdo principal da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;section&gt;</span><span class="cmd-desc">Seção temática da página</span></div>
+      <div class="cmd-item"><span class="cmd-tag">&lt;footer&gt;</span><span class="cmd-desc">Rodapé da página ou seção</span></div>
+
+    </div>
+  </div>
+
+  <!-- CSS -->
+  <div id="tab-css" class="tab-content">
+    <input type="text" placeholder="Buscar propriedade CSS..." oninput="filtrar('css', this.value)">
+    <div class="cmd-list" id="list-css">
+
+      <div class="section-title">Texto</div>
+      <div class="cmd-item"><span class="cmd-tag">color</span><span class="cmd-desc">Define a cor do texto</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-size</span><span class="cmd-desc">Tamanho da fonte (px, rem, %)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-weight</span><span class="cmd-desc">Espessura da fonte (normal, bold, 100–900)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">font-family</span><span class="cmd-desc">Tipo de fonte usada</span></div>
+      <div class="cmd-item"><span class="cmd-tag">text-align</span><span class="cmd-desc">Alinhamento do texto (left, center, right, justify)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">text-decoration</span><span class="cmd-desc">Decoração do texto (underline, none, line-through)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">line-height</span><span class="cmd-desc">Espaçamento entre linhas</span></div>
+      <div class="cmd-item"><span class="cmd-tag">letter-spacing</span><span class="cmd-desc">Espaçamento entre letras</span></div>
+
+      <div class="section-title">Fundo e borda</div>
+      <div class="cmd-item"><span class="cmd-tag">background-color</span><span class="cmd-desc">Cor de fundo do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">background-image</span><span class="cmd-desc">Imagem de fundo</span></div>
+      <div class="cmd-item"><span class="cmd-tag">border</span><span class="cmd-desc">Borda do elemento (largura, estilo, cor)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-radius</span><span class="cmd-desc">Arredonda os cantos do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-color</span><span class="cmd-desc">Cor da borda</span></div>
+      <div class="cmd-item"><span class="cmd-tag">border-width</span><span class="cmd-desc">Espessura da borda</span></div>
+      <div class="cmd-item"><span class="cmd-tag">box-shadow</span><span class="cmd-desc">Sombra ao redor do elemento</span></div>
+
+      <div class="section-title">Tamanho e espaçamento</div>
+      <div class="cmd-item"><span class="cmd-tag">width / height</span><span class="cmd-desc">Largura e altura do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">max-width / min-width</span><span class="cmd-desc">Largura máxima e mínima</span></div>
+      <div class="cmd-item"><span class="cmd-tag">padding</span><span class="cmd-desc">Espaço interno entre o conteúdo e a borda</span></div>
+      <div class="cmd-item"><span class="cmd-tag">margin</span><span class="cmd-desc">Espaço externo ao redor do elemento</span></div>
+      <div class="cmd-item"><span class="cmd-tag">box-sizing</span><span class="cmd-desc">Define como largura/altura incluem padding e borda</span></div>
+
+      <div class="section-title">Display e posicionamento</div>
+      <div class="cmd-item"><span class="cmd-tag">display</span><span class="cmd-desc">Tipo de exibição: block, inline, flex, grid, none</span></div>
+      <div class="cmd-item"><span class="cmd-tag">position</span><span class="cmd-desc">Posicionamento: static, relative, absolute, fixed</span></div>
+      <div class="cmd-item"><span class="cmd-tag">top / right / bottom / left</span><span class="cmd-desc">Deslocamento quando o elemento está posicionado</span></div>
+      <div class="cmd-item"><span class="cmd-tag">z-index</span><span class="cmd-desc">Define qual elemento fica na frente quando se sobrepõem</span></div>
+      <div class="cmd-item"><span class="cmd-tag">overflow</span><span class="cmd-desc">Controla o conteúdo que ultrapassa o elemento (hidden, scroll, auto)</span></div>
+
+      <div class="section-title">Flexbox</div>
+      <div class="cmd-item"><span class="cmd-tag">display: flex</span><span class="cmd-desc">Ativa o layout flexível no container</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-direction</span><span class="cmd-desc">Direção dos itens: row (horizontal) ou column (vertical)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">justify-content</span><span class="cmd-desc">Alinha itens no eixo principal (center, space-between etc.)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">align-items</span><span class="cmd-desc">Alinha itens no eixo cruzado (center, flex-start etc.)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">gap</span><span class="cmd-desc">Espaço entre os itens do flex ou grid</span></div>
+      <div class="cmd-item"><span class="cmd-tag">flex-wrap</span><span class="cmd-desc">Permite que os itens quebrem para a próxima linha</span></div>
+
+      <div class="section-title">Outros</div>
+      <div class="cmd-item"><span class="cmd-tag">cursor</span><span class="cmd-desc">Tipo de cursor ao passar o mouse (pointer, default etc.)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">opacity</span><span class="cmd-desc">Transparência do elemento (0 = invisível, 1 = opaco)</span></div>
+      <div class="cmd-item"><span class="cmd-tag">transition</span><span class="cmd-desc">Animação suave ao mudar uma propriedade CSS</span></div>
+      <div class="cmd-item"><span class="cmd-tag">visibility</span><span class="cmd-desc">Mostra ou esconde o elemento sem remover o espaço (visible, hidden)</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
+      document.getElementById('tab-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function filtrar(tab, query) {
+      var q = query.toLowerCase();
+      var items = document.querySelectorAll('#list-' + tab + ' .cmd-item');
+      var sections = document.querySelectorAll('#list-' + tab + ' .section-title');
+
+      items.forEach(function(item) {
+        item.style.display = item.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+
+      sections.forEach(function(sec) {
+        sec.style.display = q ? 'none' : '';
+      });
+    }
+  </script>
+
+</body>
+</html>

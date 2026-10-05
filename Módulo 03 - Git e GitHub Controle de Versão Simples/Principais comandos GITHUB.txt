@@ -1,0 +1,65 @@
+PASSO A PASSO COMPLETO
+1. Criar repositório no GitHub
+clique em New Repository
+escolha o nome
+clique em Create repository
+Exemplo: meu-projeto
+
+2. Abrir terminal na pasta do projeto
+Exemplo:
+cd C:\Users\James\meu-projeto
+
+3. Inicializar Git
+git init
+Isso cria o repositório Git local.
+
+4. Adicionar arquivos
+Adicionar todos os arquivos: git add . ou arquivo específico: git add arquivo.txt
+
+5. Criar commit
+git commit -m "Primeiro commit"
+
+6. Conectar ao GitHub
+Copie a URL do repositório.
+Exemplo: https://github.com/jameskuehl18/entra21_2026
+
+Adicionar remoto:
+git remote add origin https://github.com/jameskuehl18/entra21_2026
+
+7. Enviar arquivos para o GitHub
+git push -u origin master(ou pode ser main)
+
+Fluxo resumido
+git init
+git add .
+git commit -m "Primeiro commit"
+git remote add origin URL_DO_REPOSITORIO
+git push -u origin master
+
+Exemplo REAL completo
+cd C:\Users\James\meu-projeto
+git init
+git add .
+git commit -m "Projeto inicial"
+git remote add origin https://github.com/jameskuehl18/entra21_2026
+git branch -m main
+git push -u origin master
+Depois do primeiro envio
+
+Nas próximas alterações basta:
+git add .
+git commit -m "Atualização do sistema"
+git push
+
+Possíveis erros:
+Erro de autenticação
+O GitHub não aceita mais senha comum via HTTPS.
+
+Você deve usar:
+Token (PAT)
+GitHub Desktop
+SSH
+Verificar se funcionou
+
+Acesse seu repositório no GitHub e atualize a página.
+Os arquivos enviados aparecerão online.

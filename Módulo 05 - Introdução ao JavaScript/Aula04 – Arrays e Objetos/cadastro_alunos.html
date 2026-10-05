@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="cadastro_alunos.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Cadastro de Alunos</h1>
+
+        <div class="formulario">
+
+            <input type="text" id="nome" placeholder="Nome">
+
+            <input type="number" id="idade" placeholder="Idade">
+
+            <input type="text" id="curso" placeholder="Curso">
+
+            <input type="number" id="nota" step="0.1" placeholder="Nota Final">
+
+            <button onclick="cadastrar()">
+                Cadastrar
+            </button>
+
+        </div>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script src="cadastro_alunos.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+
+PRINCIPAIS COMANDOS DO GITHUB E GIT COM EXEMPLOS
+================================================
+
+1. CLONAR REPOSITÓRIO
+git clone https://github.com/usuario/repositorio.git
+
+Exemplo:
+git clone https://github.com/jameskuehl18/projeto-java.git
+
+------------------------------------------------
+
+2. VERIFICAR STATUS
+git status
+
+------------------------------------------------
+
+3. ADICIONAR ARQUIVOS
+git add arquivo.txt
+git add .
+
+------------------------------------------------
+
+4. REALIZAR COMMIT
+git commit -m "Mensagem do commit"
+
+Exemplo:
+git commit -m "Adiciona tela de login"
+
+------------------------------------------------
+
+5. ENVIAR PARA O GITHUB
+git push origin main
+
+------------------------------------------------
+
+6. BAIXAR ALTERAÇÕES
+git pull origin main
+
+------------------------------------------------
+
+7. CRIAR BRANCH
+git branch feature-login
+
+------------------------------------------------
+
+8. TROCAR DE BRANCH
+git checkout feature-login
+
+------------------------------------------------
+
+9. CRIAR E TROCAR BRANCH
+git checkout -b feature-cadastro
+
+------------------------------------------------
+
+10. LISTAR BRANCHES
+git branch
+
+------------------------------------------------
+
+11. MESCLAR BRANCH
+git merge develop
+
+------------------------------------------------
+
+12. EXCLUIR BRANCH
+git branch -d feature-login
+
+------------------------------------------------
+
+13. REMOVER ARQUIVO DO STAGE
+git restore --staged arquivo.txt
+
+------------------------------------------------
+
+14. DESCARTAR ALTERAÇÕES
+git restore arquivo.txt
+
+------------------------------------------------
+
+15. VER HISTÓRICO
+git log
+git log --oneline
+
+------------------------------------------------
+
+16. DESFAZER COMMIT
+git reset --soft HEAD~1
+
+------------------------------------------------
+
+17. REVERTER COMMIT
+git revert HEAD
+
+------------------------------------------------
+
+18. STASH
+git stash
+git stash pop
+
+------------------------------------------------
+
+19. ADICIONAR REMOTO
+git remote add origin https://github.com/usuario/projeto.git
+
+------------------------------------------------
+
+20. LISTAR REMOTOS
+git remote -v
+
+------------------------------------------------
+
+21. CRIAR TAG
+git tag v1.0
+
+------------------------------------------------
+
+22. ENVIAR TAGS
+git push origin --tags
+
+------------------------------------------------
+
+23. EXEMPLO COMPLETO
+
+git init
+echo "Olá GitHub" > arquivo.txt
+git add .
+git commit -m "Primeiro commit"
+git branch develop
+git checkout develop
+git push -u origin develop
+
+================================================
+FIM

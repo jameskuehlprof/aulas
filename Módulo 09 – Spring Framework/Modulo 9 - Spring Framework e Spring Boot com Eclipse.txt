@@ -1,0 +1,8 @@
+Módulo 09 – Introdução ao Spring Framework
+Carga Horária: 40 horas / 10 aulas
+Conteúdo Abordado:
+-Fundamentos do Spring Framework
+o Configuração inicial e estrutura de projetos Spring Boot
+o Criação de APIs RESTful simples
+o Persistência de dados com Spring Data JPA
+-Segurança básica com Spring Security (foco em autenticação simples)

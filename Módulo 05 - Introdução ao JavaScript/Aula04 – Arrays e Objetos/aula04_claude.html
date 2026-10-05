@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04 — Arrays & Objetos JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="aula04_claude.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <header class="hero">
+        <span class="label">JavaScript — Aula 04</span>
+        <h1>Arrays <em>&</em> Objetos</h1>
+        <p class="subtitle">Estruturas de dados, métodos e iteração</p>
+    </header>
+
+    <main class="grid">
+
+        <!-- SEÇÃO 1: Arrays simples -->
+        <section class="card" data-delay="0">
+            <div class="card-header">
+                <span class="tag">Array</span>
+                <h2>Frutas</h2>
+            </div>
+            <p class="desc">Declaração e acesso por índice</p>
+            <div class="array-visual" id="frutas-list"></div>
+            <pre class="code-block">let frutas = ["Maçã", "Banana", "Laranja"];
+frutas[0] // → Maçã
+frutas[1] // → Banana
+frutas[2] // → Laranja</pre>
+        </section>
+
+        <!-- SEÇÃO 2: push / pop / length -->
+        <section class="card" data-delay="1">
+            <div class="card-header">
+                <span class="tag">Métodos</span>
+                <h2>push · pop · length</h2>
+            </div>
+            <p class="desc">Manipulando arrays dinamicamente</p>
+            <div class="steps" id="alunos-steps"></div>
+            <pre class="code-block">alunos.push("Marcos") // adiciona
+alunos.pop()          // remove último
+alunos.length         // → 2</pre>
+        </section>
+
+        <!-- SEÇÃO 3: Objeto simples -->
+        <section class="card card--wide" data-delay="2">
+            <div class="card-header">
+                <span class="tag">Objeto</span>
+                <h2>Propriedades & Mutação</h2>
+            </div>
+            <p class="desc">Acesso, alteração e adição de propriedades</p>
+            <div class="obj-grid" id="aluno-obj"></div>
+            <pre class="code-block">let aluno = { nome:"João", idade:18, curso:"JavaScript" };
+aluno.idade = 19;          // altera
+aluno.cidade = "Blumenau"; // adiciona</pre>
+        </section>
+
+        <!-- SEÇÃO 4: Método em objeto -->
+        <section class="card" data-delay="3">
+            <div class="card-header">
+                <span class="tag">Método</span>
+                <h2>Função no Objeto</h2>
+            </div>
+            <p class="desc">Objetos podem conter funções</p>
+            <div class="output-box" id="metodo-output"></div>
+            <pre class="code-block">let aluno_teste = {
+  nome: "Maria",
+  apresentar: function() {
+    console.log("Olá, meu nome é " + this.nome);
+  }
+};
+aluno_teste.apresentar();</pre>
+        </section>
+
+        <!-- SEÇÃO 5: Array de objetos -->
+        <section class="card card--wide" data-delay="4">
+            <div class="card-header">
+                <span class="tag">Array de Objetos</span>
+                <h2>Turma de Alunos</h2>
+            </div>
+            <p class="desc">Cada posição do array é um objeto completo</p>
+            <div class="student-cards" id="alunos-obj-list"></div>
+            <pre class="code-block">alunos_obj[0].nome  // → Ana
+alunos_obj[1].idade // → 18</pre>
+        </section>
+
+        <!-- SEÇÃO 6: Iteração -->
+        <section class="card card--full" data-delay="5">
+            <div class="card-header">
+                <span class="tag">Iteração</span>
+                <h2>for · forEach</h2>
+            </div>
+            <p class="desc">Duas formas de percorrer arrays</p>
+            <div class="iter-split">
+                <div class="iter-col">
+                    <h3>for <span class="loop-tag">clássico</span></h3>
+                    <div class="iter-list" id="for-list"></div>
+                    <pre class="code-block">for(let i = 0; i &lt; alunos.length; i++) {
+  console.log(alunos[i]);
+}</pre>
+                </div>
+                <div class="iter-divider"></div>
+                <div class="iter-col">
+                    <h3>forEach <span class="loop-tag">moderno</span></h3>
+                    <div class="iter-list" id="foreach-list"></div>
+                    <pre class="code-block">alunos.forEach(function(aluno) {
+  console.log(aluno);
+});</pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>JavaScript · Estruturas de Dados Fundamentais</span>
+    </footer>
+
+    <script src="aula04_claude.js"></script>
+</body>
+</html>

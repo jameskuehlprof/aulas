@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 21
+Implementation-Title: Aula 05 - Arena de IA Generativa (Claude x ChatGPT
+  x Gemini)
+Implementation-Version: 1.0.0
+Created-By: Maven Integration for Eclipse
+

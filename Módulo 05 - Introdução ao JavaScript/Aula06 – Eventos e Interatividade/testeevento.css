@@ -1,0 +1,9 @@
+*{
+    color: black;
+}
+
+#caixa{
+    width:200px;
+    height:100px;
+    background:#ccc;
+}

@@ -1,0 +1,25 @@
+Ref. o trabalho de HTML+CSS para o dia 01/06/2026:
+Diretrizes para o "Projeto Final Integrador do módulo HTML e CSS".
+O objetivo é consolidar os conhecimentos desenvolvidos ao longo das aulas por meio da criação de uma interface web moderna, organizada e responsiva.
+Esta atividade será prática e em grupo.
+Entrega será no dia 08/06/2026 das 18:40 - 20:59 ao qual deverá ser postado no AKADEMOS por todos os integrantes do grupo de forma individual o mesmo conteúdo do trabalho(Site HTML+CSS + apresentação).
+ 
+As equipes terão 10 minutos para apresentação para avaliação.
+A apresentação está programada para iniciar das 21:00 - 21:40.
+GRUPOS:
+1) Mercúrio - Nilton, Maria Luiza, Natan,  Laura, Julio e Igor
+2) Vênus - Luiz, Brayan, Vilmar, Nickolas, Hugo. Gustavo, 
+3) Terra - Airam, Lucas, Gabriel, Carlos, Guilheme leicht
+4) Marte -Jader, Matheus, Giovanni, Miguel, Felipe, Ítalo e Liliane
+ 
+Descrição do Projeto
+O trabalho deverá ser desenvolvido em grupo e consistirá na criação de uma interface web completa de algum tema diverso contendo os seguintes elementos:
+Tela de login; Formulário de cadastro;  Menu de navegação;  Área principal com conteúdo;  Rodapé institucional;  Layout responsivo utilizando CSS.
+Objetivos da Atividade
+Aplicar conceitos de HTML semântico;  Utilizar CSS para estilização e organização visual;  Implementar layouts responsivos;  Praticar organização de arquivos e estrutura de projeto e   Desenvolver trabalho colaborativo em equipe.
+Requisitos Técnicos
+Separação entre HTML, CSS e JavaScript;  Uso de Flexbox ou Grid Layout;  Responsividade para desktop e dispositivos móveis;  Código organizado e comentado;  Boa experiência visual e usabilidade.
+Critérios de Avaliação
+Organização do código; Funcionamento correto da interface;  Responsividade;   Qualidade visual;  Criatividade e usabilidade;  Participação da equipe e Apresentação.
+Conclusão
+O Projeto Final Integrador representa uma oportunidade para consolidar os conhecimentos em desenvolvimento web, permitindo aos alunos aplicarem na prática conceitos fundamentais de HTML e CSS na construção de interfaces modernas e responsivas.

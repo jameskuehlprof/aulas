@@ -1,0 +1,91 @@
+/*Segue a solução completa em MySQL:*/
+
+0.
+CREATE SCHEMA IF NOT EXISTS loja DEFAULT CHARACTER SET utf8;
+USE loja;
+
+1. Criar a tabela CLIENTE
+CREATE TABLE cliente (
+    id_cliente INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    telefone VARCHAR(15)
+);
+
+2. Inserir 5 registros
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES (1, 'João Silva', '111.111.111-11', '(47)99999-1111');
+
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES (2, 'Maria Souza', '222.222.222-22', '(47)99999-2222');
+
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES (3, 'Carlos Oliveira', '333.333.333-33', '(47)99999-3333');
+
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES (4, 'Ana Pereira', '444.444.444-44', '(47)99999-4444');
+
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES (5, 'Fernanda Costa', '555.555.555-55', '(47)99999-5555');
+Forma mais prática
+INSERT INTO cliente (id_cliente, nome, cpf, telefone)
+VALUES
+(1, 'João Silva', '111.111.111-11', '(47)99999-1111'),
+(2, 'Maria Souza', '222.222.222-22', '(47)99999-2222'),
+(3, 'Carlos Oliveira', '333.333.333-33', '(47)99999-3333'),
+(4, 'Ana Pereira', '444.444.444-44', '(47)99999-4444'),
+(5, 'Fernanda Costa', '555.555.555-55', '(47)99999-5555');
+
+3. Consultar todos os registros em ordem decrescente de id_cliente
+SELECT *
+FROM cliente
+ORDER BY id_cliente DESC;
+Resultado esperado
+id_cliente	nome	cpf	telefone
+5	Fernanda Costa	555.555.555-55	(47)99999-5555
+4	Ana Pereira	444.444.444-44	(47)99999-4444
+3	Carlos Oliveira	333.333.333-33	(47)99999-3333
+2	Maria Souza	222.222.222-22	(47)99999-2222
+1	João Silva	111.111.111-11	(47)99999-1111
+4. Contar a quantidade de registros da tabela
+SELECT COUNT(*) AS quantidade_clientes
+FROM cliente;
+Resultado esperado
+quantidade_clientes
+5
+
+
+ou
+
+CREATE TABLE cliente (id_cliente INT PRIMARY KEY AUTO_INCREMENT not null, 
+                      nome VARCHAR(100) not null,
+                      cpf varchar(11) not null, 
+                      telefone varchar(11));
+INSERT INTO cliente (NOME, CPF) VALUES ('João','00413682231');
+INSERT INTO cliente (NOME, CPF) VALUES ('Maria','00415682231');
+commit;
+SELECT * FROM CLIENTE;
+SELECT nome FROM CLIENTE;
+INSERT INTO cliente (NOME, CPF, telefone) 
+VALUES ('Maluco','00415682231','479811');
+select count(*) from cliente;
+select * from cliente order by nome asc;
+select 10+20 as soma, 10*20 as multiplica, 20/10 as divisão;
+select 'João' as Nome,'25/05/1990' as Data_Nascimento,'Blumenau' as Cidade
+union
+select 'maria' as Nome,'20/05/1986' as Data_Nascimento,'Timbó' as Cidade
+ INSERT INTO cliente (NOME, CPF) 
+select 'Josue','00000007'
+union
+select 'Thiago','00000000444';
+select (45+46)/2 as media;
+select 'James' as Nome,'Professor' as profissao,'Timbó' as Cidade;
+select round((45+46+98)/3,2) as media;
+select 500 + 300 as soma,
+       1000-250  as subtracao,
+       50*8      as multiplicacao,
+       round(900/4,2)     as divisão;
+INSERT INTO cliente (NOME, CPF) 
+values ('João','00413682231'),
+       ('Maria','00415682231');   
+select * from cliente order by id_cliente desc;

@@ -1,0 +1,7 @@
+## Gabarito do quiz relâmpago (slide 12)
+
+1. **Claude** (Anthropic) usa `x-api-key`; OpenAI usa `Authorization: Bearer`; Gemini usa `x-goog-api-key`.
+2. No Gemini o papel do assistente é **`model`**.
+3. Na OpenAI o system prompt é uma mensagem com `role: "system"` dentro de `messages`.
+4. `finish_reason = "length"` (OpenAI) / `stop_reason = "max_tokens"` (Claude): a resposta **foi cortada** pelo limite de tokens.
+5. **Falso** – a API não lembra nada; o nosso código reenvia o histórico a cada chamada.

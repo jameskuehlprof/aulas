@@ -1,0 +1,18 @@
+BAIXAR o JAVA SDK e intalar
+https://www.oracle.com/br/java/technologies/downloads/#jdk25-windows - x64 Installer
+
+variáveis de Ambiente:
+
+
+JAVa_HOME: C:\Program Files\Java\jdk-25.0.2
+PATH: C:\Program Files\Java\jdk-25.0.2\bin
+
+CMD: java -version
+
+apache tomcat download - https://tomcat.apache.org/download-90.cgi
+32-bit/64-bit Windows Service Installer (pgp, sha512)
+
+https://httpd.apache.org/download.cgi - Files for Microsoft Windows
+C:\Apache24\conf\httpd.conf
+
+no cmd: httpd.exe -k /install

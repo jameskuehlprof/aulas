@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 5 - Introdução ao DOM</title>
+    <link rel="stylesheet" href="aula05.css">
+</head>
+<body>
+    <header>
+        <h1 id="titulo">Aula 5 - DOM (Document Object Model)</h1>
+        <p>Manipulação de elementos HTML com JavaScript</p>
+    </header>
+    <main>
+        <section class="card">
+            <h2>Manipulação de Texto</h2>
+            <input type="text" id="nome" placeholder="Digite seu nome">
+            <button onclick="alterarTexto()">
+                Alterar Título
+            </button>
+            <p id="mensagem">
+                Seu nome aparecerá aqui.
+            </p>
+        </section>
+        <section class="card">
+            <h2>Manipulação com innerHTML</h2>
+            <button onclick="criarConteudo()">
+                Criar Conteúdo
+            </button>
+            <div id="conteudo"></div>
+        </section>
+        <section class="card">
+            <h2>Manipulação de Estilos</h2>
+            <div id="caixa" class="caixa">
+                Caixa de Exemplo
+            </div>
+            <button onclick="mudarCor()">
+                Mudar Cor
+            </button>
+            <button onclick="alternarClasse()">
+                Destacar Caixa
+            </button>
+        </section>
+        <section class="card">
+            <h2>querySelectorAll()</h2>
+            <ul>
+                <li class="item">HTML</li>
+                <li class="item">CSS</li>
+                <li class="item">JavaScript</li>
+            </ul>
+            <button onclick="destacarItens()">
+                Destacar Itens
+            </button>
+        </section>
+    </main>
+    <script src="aula05.js"></script>
+</body>
+</html>

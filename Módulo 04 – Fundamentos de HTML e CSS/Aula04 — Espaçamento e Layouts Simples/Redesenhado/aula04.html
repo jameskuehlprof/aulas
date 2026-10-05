@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Administrativo</title>
+  <link rel="stylesheet" href="estilo04.css">
+</head>
+<body>
+<div class="shell">
+
+  <header>
+    <div class="header-inner">
+      <img src="logo.png" alt="Logo" class="logo-site">
+      <span class="header-title">Sistema <span>Admin</span></span>
+      <span class="header-badge">Java Web</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="aula04_Dashboard.html" class="active">
+      <span class="nav-icon">⊞</span> Dashboard
+    </a>
+    <a href="aula04_usuarios.html">
+      <span class="nav-icon">◉</span> Usuários
+    </a>
+    <a href="#">
+      <span class="nav-icon">▦</span> Produtos
+    </a>
+    <a href="#">
+      <span class="nav-icon">◈</span> Relatórios
+    </a>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h2>Painel Principal</h2>
+        <p class="subtitle">Visão geral do sistema · Atualizado agora</p>
+      </div>
+      <a href="#" class="btn btn-primary">+ Novo Registro</a>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card card--blue">
+        <div class="card-icon">👥</div>
+        <h3>Total de Usuários</h3>
+        <div class="card-value">150</div>
+        <p>usuários cadastrados</p>
+        <span class="card-trend trend-up">▲ 12% este mês</span>
+      </div>
+      <div class="cartao card--green">
+        <div class="card-icon">📦</div>
+        <h3>Total de Produtos</h3>
+        <div class="card-value">320</div>
+        <p>produtos cadastrados</p>
+        <span class="card-trend trend-up">▲ 8% este mês</span>
+      </div>
+      <div class="card card--yellow">
+        <div class="card-icon">📄</div>
+        <h3>Relatórios</h3>
+        <div class="card-value">47</div>
+        <p>relatórios gerados</p>
+        <span class="card-trend trend-up">▲ 5% este mês</span>
+      </div>
+      <div class="card card--red">
+        <div class="card-icon">⚡</div>
+        <h3>Sessões Ativas</h3>
+        <div class="card-value">23</div>
+        <p>usuários online agora</p>
+        <span class="card-trend trend-down">▼ 2 última hora</span>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-header">
+        <h3>Atividade Recente</h3>
+        <a href="#" class="btn btn-ghost">Ver tudo</a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>Ação</th>
+            <th>Módulo</th>
+            <th>Status</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="avatar" style="background: linear-gradient(135deg,#4f8ef7,#7c5cfc)">JA</span> João Alves</td>
+            <td>Cadastrou produto</td>
+            <td>Produtos</td>
+            <td><span class="badge badge-green">Concluído</span></td>
+            <td>14:32</td>
+          </tr>
+          <tr>
+            <td><span class="avatar" style="background: linear-gradient(135deg,#3ecf8e,#1aab6d)">MS</span> Maria Silva</td>
+            <td>Gerou relatório</td>
+            <td>Relatórios</td>
+            <td><span class="badge badge-blue">Em andamento</span></td>
+            <td>14:18</td>
+          </tr>
+          <tr>
+            <td><span class="avatar" style="background: linear-gradient(135deg,#f7c948,#e8a820)">PC</span> Pedro Costa</td>
+            <td>Editou usuário</td>
+            <td>Usuários</td>
+            <td><span class="badge badge-green">Concluído</span></td>
+            <td>13:55</td>
+          </tr>
+          <tr>
+            <td><span class="avatar" style="background: linear-gradient(135deg,#f76464,#e03030)">AL</span> Ana Lima</td>
+            <td>Exportou dados</td>
+            <td>Relatórios</td>
+            <td><span class="badge badge-yellow">Pendente</span></td>
+            <td>13:40</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p><span class="footer-dot"></span>Sistema online</p>
+    <p>© 2026 — Sistema Java Web</p>
+  </footer>
+
+</div>
+</body>
+</html>

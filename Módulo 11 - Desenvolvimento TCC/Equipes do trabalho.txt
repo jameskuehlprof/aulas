@@ -1,0 +1,34 @@
+Equipes:
+1) Equipe Mercúrio. Nome do projeto: Sistema de Gestão Financeira
+Integrantes:
+Nilton Henrique Patrocínio Moraes
+Maria Luiza Guimarães de Oliveira Nobi Mariani
+Natan Gabriel Nardelli
+Laura Costa Fernandes
+Igor Maciel Pinhero
+ 
+2) Equipe Vênus - Nome do projeto: Sistema de Vistorias
+Integrantes:
+Luiz Felipe Sonntag
+Vilmar do Carmo Junior
+Nickolas Luiz Malkiewiez Busarello
+Hugo Vinicius Zickuhr
+Gustavo Meyer
+ 
+3) Equipe Terra - Projeto:  Sistema de Barbearias
+Integrantes:
+Airam Aliel Koepsel
+Lucas Leal
+Gabriel Rodrigo Parasky
+Júlio Cesar Ravizza
+Brayan Bonatti
+ 
+4) Equipe Marte - Projeto: Sistema One Milion Services
+Integrantes:
+Felipe Ruda Turbiani
+Giovanni Alejandro Leandro Kreutzfeld
+Matheus Fabio Ribeiro
+Jader David Klug Junior
+Miguel Hoepers
+
+Líderes escolhidos: Nilton Moraes, Felipe Turbiani, Nickolas Busarello e Gabriel Parasky

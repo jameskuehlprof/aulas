@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.com.senac</groupId>
+  <artifactId>aula04-consumindo-apis-ia</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>Aula 04 - Consumindo APIs de IA em Java</name>
+  <description>
+    Modulo 10 - Tecnologias Emergentes e IA. Projeto de apoio com 5 exemplos
+    de consumo de API REST em Java usando o HttpClient nativo (Java 11+):
+    ConsultaCepHttp (viacep, sem chave), PrimeiraChamadaHttp (agify.io, sem
+    chave), GeradorTextoIA (OpenAI, header Bearer), ClaudeChat (Anthropic,
+    header x-api-key) e GeminiChat (Google, chave via query param na URL).
+  </description>
+
+  <properties>
+    <!--
+      Mantido em 17 de propósito: é o mesmo "JDK 17+" que já está nos
+      pré-requisitos da Aula 04 (slide 6 / plano de aula), então o projeto
+      compila em qualquer máquina do laboratório, tenha ela JDK 17, 21 ou 26.
+      Se quiser travar especificamente na versão que você tem instalada
+      (Java 26), troque os 3 valores abaixo para 26 - só lembre que aí quem
+      tiver um JDK mais antigo não vai conseguir compilar o projeto.
+    -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jackson.version>2.17.0</jackson.version>
+  </properties>
+
+  <dependencies>
+    <!-- Leitura/escrita de JSON - usado pelas 5 classes de exemplo -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+  </dependencies>
+
+  <build>
+    <finalName>aula04-consumindo-apis-ia</finalName>
+    <plugins>
+      <!-- Garante compilacao no nivel certo mesmo que o JDK padrao do Eclipse seja outro -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${maven.compiler.target}</release>
+        </configuration>
+      </plugin>
+
+      <!--
+        Permite rodar cada exemplo direto pelo Maven, sem precisar configurar
+        Run Configuration manualmente no Eclipse:
+          mvn exec:java -Dexec.mainClass="br.com.senac.aula04.ConsultaCepHttp"
+          mvn exec:java -Dexec.mainClass="br.com.senac.aula04.PrimeiraChamadaHttp"
+          mvn exec:java -Dexec.mainClass="br.com.senac.aula04.GeradorTextoIA"
+
+        Novos (ver aula04-passo-a-passo-claude-gemini.md para configurar as
+        variáveis de ambiente ANTHROPIC_API_KEY / GEMINI_API_KEY antes):
+          mvn exec:java -Dexec.mainClass="br.com.senac.aula04.ClaudeChat"
+          mvn exec:java -Dexec.mainClass="br.com.senac.aula04.GeminiChat"
+      -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <mainClass>br.com.senac.aula04.ConsultaCepHttp</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

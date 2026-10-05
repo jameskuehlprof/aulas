@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visão Computacional – Aula 06</title>
+<style>
+  :root { --verde: #1e5c2e; --fundo: #f4f7f5; --borda: #d7e2da; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--fundo); color: #222; }
+  header { background: var(--verde); color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+  header a { color: #fff; opacity: .85; font-size: 14px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 380px 1fr; gap: 20px; }
+  .painel { background: #fff; border: 1px solid var(--borda); border-radius: 12px; padding: 16px; }
+  label { display: block; font-size: 13px; color: #555; margin: 10px 0 4px; }
+  select, input[type=text] { width: 100%; padding: 8px; border: 1px solid var(--borda); border-radius: 8px; font: inherit; }
+  .drop { border: 2px dashed var(--borda); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; color: #666; }
+  .drop.over { border-color: var(--verde); background: #eef7f0; }
+  .drop img { max-width: 100%; max-height: 260px; border-radius: 8px; margin-top: 8px; }
+  .acoes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+  .btn { background: var(--verde); color: #fff; border: 0; padding: 10px; border-radius: 8px; cursor: pointer; font: inherit; }
+  .btn.sec { background: #fff; color: var(--verde); border: 1px solid var(--verde); }
+  .btn:disabled { opacity: .5; cursor: wait; }
+  pre { background: #1f2a24; color: #e8f5e9; padding: 14px; border-radius: 10px; overflow: auto; font-size: 13px; min-height: 300px; white-space: pre-wrap; }
+  .barra { height: 8px; background: #e6ece8; border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
+  .barra div { height: 100%; background: var(--verde); }
+  .rotulo { display: flex; justify-content: space-between; font-size: 14px; }
+  .erro { color: #b00020; }
+  .aviso { background: #fff7e0; border-left: 4px solid #e0a800; padding: 8px; margin: 6px 0; font-size: 13px; }
+  h3 { margin: 6px 0; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <strong>👁️ Visão Computacional em Java Web — Aula 06</strong>
+  <a href="/swagger-ui.html" target="_blank">Swagger UI ↗</a>
+</header>
+<main>
+  <div class="painel">
+    <div class="drop" id="drop">
+      <input type="file" id="arquivo" accept="image/*" hidden>
+      <div id="dica">📷 Clique ou arraste uma imagem aqui<br><small>JPEG, PNG, WEBP ou GIF · até 8 MB</small></div>
+      <img id="preview" hidden>
+    </div>
+    <label>Provedor</label>
+    <select id="provedor">
+      <option value="gemini">Gemini (multimodal, free tier)</option>
+      <option value="claude">Claude (multimodal)</option>
+      <option value="openai">ChatGPT (multimodal)</option>
+      <option value="google-vision">Google Cloud Vision (API especializada)</option>
+    </select>
+    <label>Tom (só para "Produto")</label>
+    <input type="text" id="tom" placeholder="ex.: jovem e descontraído">
+    <div class="acoes">
+      <button class="btn" data-op="rotulos">1 · Rótulos</button>
+      <button class="btn" data-op="ocr">2 · OCR</button>
+      <button class="btn" data-op="produto">3 · Produto</button>
+      <button class="btn" data-op="recibo">★ Recibo</button>
+    </div>
+    <p id="status" style="font-size:13px;color:#666"></p>
+  </div>
+
+  <div class="painel">
+    <div id="visual"></div>
+    <pre id="saida">Envie uma imagem e escolha uma operação.</pre>
+  </div>
+</main>
+
+<script>
+  let arquivo = null;
+  const drop = document.getElementById('drop'), input = document.getElementById('arquivo');
+  drop.onclick = () => input.click();
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+  drop.ondragleave = () => drop.classList.remove('over');
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); usar(e.dataTransfer.files[0]); };
+  input.onchange = () => usar(input.files[0]);
+  function usar(f) {
+    if (!f) return; arquivo = f;
+    const img = document.getElementById('preview'); img.src = URL.createObjectURL(f); img.hidden = false;
+    document.getElementById('dica').innerHTML = `<small>${f.name} · ${(f.size / 1024).toFixed(0)} KB</small>`;
+  }
+
+  document.querySelectorAll('.acoes button').forEach(b => b.onclick = async () => {
+    if (!arquivo) { alert('Escolha uma imagem primeiro.'); return; }
+    const op = b.dataset.op, provedor = document.getElementById('provedor').value;
+    const fd = new FormData(); fd.append('imagem', arquivo);
+    let url = `/api/visao/${op}?provedor=${provedor}`;
+    if (op === 'produto' && document.getElementById('tom').value) url += '&tom=' + encodeURIComponent(document.getElementById('tom').value);
+    document.querySelectorAll('.acoes button').forEach(x => x.disabled = true);
+    document.getElementById('status').textContent = `Enviando para ${provedor}...`;
+    document.getElementById('visual').innerHTML = '';
+    const t0 = Date.now();
+    try {
+      const r = await fetch(url, { method: 'POST', body: fd });
+      const json = await r.json();
+      document.getElementById('saida').textContent = JSON.stringify(json, null, 2);
+      document.getElementById('status').textContent = r.ok ? `OK em ${Date.now() - t0} ms` : `Erro HTTP ${r.status}`;
+      if (r.ok) desenhar(op, json);
+    } catch (e) {
+      document.getElementById('saida').innerHTML = '<span class="erro">' + e.message + '</span>';
+    } finally { document.querySelectorAll('.acoes button').forEach(x => x.disabled = false); }
+  });
+
+  function desenhar(op, j) {
+    const v = document.getElementById('visual');
+    if (op === 'rotulos') {
+      v.innerHTML = '<h3>Rótulos</h3>' + j.rotulos.map(r => `<div class="rotulo"><span>${r.nome}</span><span>${(r.confianca * 100).toFixed(0)}%</span></div><div class="barra"><div style="width:${r.confianca * 100}%"></div></div>`).join('');
+    } else if (op === 'ocr') {
+      v.innerHTML = `<h3>OCR · ${j.palavras} palavras</h3>`;
+    } else if (op === 'produto') {
+      v.innerHTML = `<h3>${j.titulo}</h3><p>${j.descricao}</p><p><small>${j.categoria} · ${(j.tags || []).join(', ')}</small></p>`;
+    } else if (op === 'recibo') {
+      v.innerHTML = `<h3>${j.legivel ? '✅ Recibo lido' : '❌ Ilegível'}</h3>` +
+        (j.legivel ? `<p><b>${j.estabelecimento || '?'}</b> · ${j.data || 'sem data'} · <b>R$ ${j.valorTotal ?? '?'}</b> · ${j.formaPagamento}</p>` : '') +
+        (j.avisos || []).map(a => `<div class="aviso">⚠️ ${a}</div>`).join('');
+    }
+  }
+</script>
+</body>
+</html>

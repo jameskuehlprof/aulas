@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Usuários</title>
+
+    <link rel="stylesheet" href="aula07_usuarios.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Consulta de Usuários API</h1>
+
+        <button onclick="buscarUsuarios()">
+            Carregar Usuários
+        </button>
+
+        <div class="pesquisa">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Pesquisar pelo nome..."
+                onkeyup="filtrarUsuarios()">
+
+        </div>
+
+        <div id="quantidade"></div>
+
+        <div id="dataConsulta"></div>
+
+        <div id="usuarios"></div>
+
+        <h2>JSON Retornado pela API</h2>
+
+        <textarea
+            id="jsonDados"
+            readonly>
+        </textarea>
+
+    </div>
+
+    <script src="aula07_usuarios.js"></script>
+
+</body>
+
+</html>

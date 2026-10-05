@@ -1,0 +1,160 @@
+{
+  "info": {
+    "name": "lojavirtual – Aula 10 (Estoque Mínimo) – Gabarito",
+    "description": "Collection de referência do professor para o exercício simplificado da Aula 10 (Módulo 09 – Spring Framework): campo estoqueMinimo em Produto + endpoint de reposição de estoque com validação. Ajuste {{baseUrl}} se a aplicação não estiver em localhost:8080.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "0. Sanity check (endpoints antigos continuam de pé)",
+      "item": [
+        {
+          "name": "GET Listar produtos",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produtos"
+          }
+        },
+        {
+          "name": "GET Buscar produto por id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produtos/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Campo novo (estoqueMinimo)",
+      "item": [
+        {
+          "name": "POST Criar produto com estoqueMinimo",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "admin" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Monitor 24 polegadas\",\n  \"preco\": 899.90,\n  \"categoriaId\": 1,\n  \"estoqueMinimo\": 5\n}"
+            },
+            "url": "{{baseUrl}}/produtos"
+          }
+        },
+        {
+          "name": "POST Criar produto SEM estoqueMinimo (deve dar 400)",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "admin" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Produto sem estoque minimo\",\n  \"preco\": 10.00,\n  \"categoriaId\": 1\n}"
+            },
+            "url": "{{baseUrl}}/produtos"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Novo método (repor-estoque)",
+      "item": [
+        {
+          "name": "PATCH Repor estoque - sucesso",
+          "request": {
+            "method": "PATCH",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "admin" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos/1/repor-estoque?quantidade=10",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "produtos", "1", "repor-estoque" ],
+              "query": [ { "key": "quantidade", "value": "10" } ]
+            }
+          }
+        },
+        {
+          "name": "PATCH Repor estoque - quantidade negativa (deve dar 400)",
+          "request": {
+            "method": "PATCH",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "admin" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos/1/repor-estoque?quantidade=-5",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "produtos", "1", "repor-estoque" ],
+              "query": [ { "key": "quantidade", "value": "-5" } ]
+            }
+          }
+        },
+        {
+          "name": "PATCH Repor estoque - quantidade zero (deve dar 400)",
+          "request": {
+            "method": "PATCH",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "admin" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos/1/repor-estoque?quantidade=0",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "produtos", "1", "repor-estoque" ],
+              "query": [ { "key": "quantidade", "value": "0" } ]
+            }
+          }
+        },
+        {
+          "name": "PATCH Repor estoque - sem autenticação (deve dar 401/403)",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{baseUrl}}/produtos/1/repor-estoque?quantidade=10",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "produtos", "1", "repor-estoque" ],
+              "query": [ { "key": "quantidade", "value": "10" } ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Desafio extra (opcional)",
+      "item": [
+        {
+          "name": "GET Produtos com estoque baixo",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produtos/estoque-baixo"
+          }
+        }
+      ]
+    }
+  ]
+}

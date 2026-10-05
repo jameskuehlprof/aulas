@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 6 - Eventos e Interatividade</title>
+    <link rel="stylesheet" href="aula06_.css">
+</head>
+<body>
+    <header>
+        <h1>Eventos e Interatividade</h1>
+        <p>Praticando eventos JavaScript</p>
+    </header>
+    <main>
+        <section class="card">
+            <h2>Formulário com Validação</h2>
+            <form id="formCadastro">
+                <label>Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+                <p id="contadorCaracteres">Caracteres digitados: 0</p>
+                <label>E-mail:</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail">
+                <button type="submit">
+                    Cadastrar
+                </button>
+                <button type="button" id="btnLimpar">
+                   Limpar
+                </button>
+            </form>
+            <p id="mensagem"></p>
+        </section>
+        <section class="card">
+            <h2>Contador Interativo</h2>
+            <h3 id="contador">0</h3>
+            <button id="btnMais">+</button>
+            <button id="btnMenos">-</button>
+            <button id="btnZerar">Zerar</button>
+        </section>
+        <section class="card">
+            <h2>Troca de Tema</h2>
+            <button id="btnTema">
+               Tema Escuro
+            </button>
+            <button id="btnTemaColorido">
+                Tema Colorido
+            </button>
+        </section>
+        <section class="card">
+            <h2>Eventos Mouseover e Keydown</h2>
+            <div id="caixa">
+                Passe o mouse aqui
+            </div>
+            <br>
+            <input type="text" id="teclado" placeholder="Digite algo">
+            <p id="saidaTecla"></p>
+        </section>
+    </main>
+    <script src="aula06_.js"></script>
+</body>
+</html>

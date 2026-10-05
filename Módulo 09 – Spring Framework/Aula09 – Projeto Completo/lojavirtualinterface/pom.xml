@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.exemplo</groupId>
+    <artifactId>lojavirtualinterface</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+
+    <!--
+        Projeto Java para Web (Servlet + JSP + JSTL) que serve de
+        INTERFACE GRAFICA para a API REST do lojavirtual (projeto Spring
+        Boot do Modulo 09, pasta irma desta). Ele NAO acessa nenhum banco
+        de dados diretamente - todo o CRUD acontece via chamadas HTTP/JSON
+        para a API, atraves da classe client.ApiClient.
+
+        Por isso as dependencias sao praticamente as mesmas do sistemacad
+        (Modulo 08: Servlet + JSTL), mas SEM o driver do MySQL - e com o
+        Jackson para ler/escrever JSON.
+    -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jackson.version>2.18.2</jackson.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- Jakarta Servlet -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL - API (as tags <c:if>, <c:forEach>, <c:choose> nos JSPs) -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <!-- JSTL - implementacao (sem ela o servidor responde 500 ao usar as tags) -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <!--
+            Jackson: converte objeto Java <-> JSON nas chamadas para a API
+            do lojavirtual (ApiClient). jackson-datatype-jsr310 e' o modulo
+            que ensina o Jackson a entender LocalDateTime (usado em
+            PedidoDTO.dataPedido).
+        -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>lojavirtualinterface</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

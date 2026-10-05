@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>ENTRA21 — Plataforma Profissional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo05.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="menu">
+    <div class="menu__brand">
+      <span class="menu__dot"></span>
+      ENTRA21
+      <span class="menu__brand-tag">Pro</span>
+    </div>
+    <div class="menu__links">
+      <a href="#" class="menu__link active">Início</a>
+      <a href="#" class="menu__link">Produtos</a>
+      <a href="#" class="menu__link">Contato</a>
+    </div>
+    <button class="menu__cta">Começar →</button>
+  </nav>
+
+  <!-- HERO BOXES -->
+  <section class="container">
+    <a href="http://www.google.com.br" title="Link teste">
+    <div class="box" style="--i:0">
+      <span class="box__num">01</span>
+      <span class="box__label">Design</span>
+    </div>
+    </a>
+    <div class="box" style="--i:1">
+      <span class="box__num">02</span>
+      <span class="box__label">Código</span>
+    </div>
+    <div class="box" style="--i:2">
+      <span class="box__num">03</span>
+      <span class="box__label">Deploy</span>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards">
+    <div class="card" style="--i:0">
+      <div class="card__badge">Novo</div>
+      <h3 class="card__title">Produto 1</h3>
+      <p class="card__desc">Interface moderna com performance de alto nível para equipes que exigem o melhor.</p>
+      <a href="#" class="card__link">Ver detalhes →</a>
+    </div>
+    <div class="card" style="--i:1">
+      <div class="card__badge">Popular</div>
+      <h3 class="card__title">Produto 2</h3>
+      <p class="card__desc">Solução completa integrada com as principais ferramentas do mercado atual.</p>
+      <a href="#" class="card__link">Ver detalhes →</a>
+    </div>
+    <div class="card card--highlight" style="--i:2">
+      <div class="card__badge">Pro</div>
+      <h3 class="card__title">Produto 3</h3>
+      <p class="card__desc">Plano enterprise com suporte dedicado, SLA garantido e customizações ilimitadas.</p>
+      <a href="#" class="card__link">Ver detalhes →</a>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard">
+    <aside class="menu-lateral">
+      <div class="sidebar__logo">
+        <span class="menu__dot"></span> ENTRA21
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar__item sidebar__item--active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Produtos
+        </a>
+        <a href="#" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Usuários
+        </a>
+        <a href="#" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          Configurações
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__avatar">JD</div>
+        <div>
+          <div class="sidebar__name">João D.</div>
+          <div class="sidebar__role">Admin</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="conteudo">
+      <header class="content__header">
+        <div>
+          <h1 class="content__title">Visão Geral</h1>
+          <p class="content__sub">Bem-vindo de volta, João.</p>
+        </div>
+        <button class="btn-primary">+ Novo Projeto</button>
+      </header>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__label">Receita Mensal</div>
+          <div class="stat__value">R$ 48.290</div>
+          <div class="stat__change stat__change--up">↑ 12% este mês</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Usuários Ativos</div>
+          <div class="stat__value">3.741</div>
+          <div class="stat__change stat__change--up">↑ 8% este mês</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Projetos</div>
+          <div class="stat__value">24</div>
+          <div class="stat__change stat__change--down">↓ 2 pendentes</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Satisfação</div>
+          <div class="stat__value">98%</div>
+          <div class="stat__change stat__change--up">↑ NPS 72</div>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h2 class="activity__title">Atividade Recente</h2>
+        <ul class="activity__list">
+          <li class="activity__item">
+            <span class="activity__dot activity__dot--green"></span>
+            <span>Produto 1 publicado com sucesso</span>
+            <span class="activity__time">há 2h</span>
+          </li>
+          <li class="activity__item">
+            <span class="activity__dot activity__dot--blue"></span>
+            <span>Novo usuário registrado: Maria S.</span>
+            <span class="activity__time">há 5h</span>
+          </li>
+          <li class="activity__item">
+            <span class="activity__dot activity__dot--orange"></span>
+            <span>Relatório mensal gerado</span>
+            <span class="activity__time">ontem</span>
+          </li>
+          <li class="activity__item">
+            <span class="activity__dot activity__dot--green"></span>
+            <span>Deploy concluído — v2.4.1</span>
+            <span class="activity__time">ontem</span>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01 — JavaScript</title>
+    <link rel="stylesheet" href="aula01.css">
+</head>
+
+<body>
+
+    <div class="page-header">
+        <div class="badge">aula01.js · aula01.css</div>
+        <h1><span>Introdução ao JavaScript</span></h1>
+        <p>Variáveis, constantes, prompt(), alert() e console.log()</p>
+    </div>
+
+    <div class="layout">
+
+        <!-- CÓDIGO JS -->
+        <div class="section-label">código fonte</div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+                <span class="file-tab"><strong>aula01.js</strong></span>
+            </div>
+            <div class="card-body">
+                <pre>
+<span class="cmt">// CONSTANTES — valor fixo, não pode ser alterado</span>
+<span class="kw">const</span> <span class="var">ANO_ATUAL</span>      <span class="op">=</span> <span class="num">2026</span><span class="op">;</span>           <span class="cmt">// número</span>
+<span class="kw">const</span> <span class="var">PI</span>             <span class="op">=</span> <span class="num">3.14159</span><span class="op">;</span>        <span class="cmt">// decimal</span>
+<span class="kw">const</span> <span class="var">ATIVO</span>          <span class="op">=</span> <span class="kw2">true</span><span class="op">;</span>           <span class="cmt">// booleano</span>
+
+<span class="cmt">// VARIÁVEIS — valor pode mudar</span>
+<span class="kw">let</span> <span class="var">nome</span><span class="op">;</span>
+<span class="kw">let</span> <span class="var">idade</span><span class="op">;</span>
+<span class="kw">let</span> <span class="var">cidade</span><span class="op">;</span>
+
+<span class="cmt">// ENTRADA — prompt() retorna uma string</span>
+<span class="var">nome</span>   <span class="op">=</span> <span class="fn">prompt</span><span class="op">(</span><span class="str">"Digite seu nome:"</span><span class="op">);</span>
+<span class="var">idade</span>  <span class="op">=</span> <span class="fn">prompt</span><span class="op">(</span><span class="str">"Digite sua idade:"</span><span class="op">);</span>
+<span class="var">cidade</span> <span class="op">=</span> <span class="fn">prompt</span><span class="op">(</span><span class="str">"De qual cidade você é?"</span><span class="op">);</span>
+
+<span class="cmt">// PROCESSAMENTO — converte string → número</span>
+<span class="kw">let</span> <span class="var">idadeNumero</span>  <span class="op">=</span> <span class="fn">Number</span><span class="op">(</span><span class="var">idade</span><span class="op">);</span>
+<span class="kw">let</span> <span class="var">anoNascimento</span> <span class="op">=</span> <span class="var">ANO_ATUAL</span> <span class="op">-</span> <span class="var">idadeNumero</span><span class="op">;</span>
+
+<span class="cmt">// SAÍDA — alert() exibe caixa de diálogo</span>
+<span class="fn">alert</span><span class="op">(</span><span class="str">"Olá, "</span> <span class="op">+</span> <span class="var">nome</span> <span class="op">+</span> <span class="str">"! Nasceu em "</span> <span class="op">+</span> <span class="var">anoNascimento</span><span class="op">);</span>
+
+<span class="cmt">// SAÍDA — console.log() imprime no console (F12)</span>
+<span class="fn">console</span><span class="op">.</span><span class="fn">log</span><span class="op">(</span><span class="str">"Nome: "</span>   <span class="op">+</span> <span class="var">nome</span><span class="op">);</span>
+<span class="fn">console</span><span class="op">.</span><span class="fn">log</span><span class="op">(</span><span class="str">"Cidade: "</span> <span class="op">+</span> <span class="var">cidade</span><span class="op">);</span>
+<span class="fn">console</span><span class="op">.</span><span class="fn">log</span><span class="op">(</span><span class="str">"typeof nome:"</span><span class="op">,</span> <span class="kw">typeof</span> <span class="var">nome</span><span class="op">);</span>      <span class="cmt">// "string"</span>
+<span class="fn">console</span><span class="op">.</span><span class="fn">log</span><span class="op">(</span><span class="str">"typeof idadeNumero:"</span><span class="op">,</span> <span class="kw">typeof</span> <span class="var">idadeNumero</span><span class="op">);</span> <span class="cmt">// "number"</span>
+</pre>
+            </div>
+        </div>
+
+        <!-- CONCEITOS -->
+        <div class="section-label">conceitos</div>
+
+        <div class="concept-grid">
+
+            <div class="concept-card">
+                <h3 class="c-blue">const — constante</h3>
+                <div class="code-line"><span class="kw">const</span> <span class="var">PI</span> = <span
+                        class="num">3.14</span>;</div>
+                <div class="code-line"><span class="kw">const</span> <span class="var">ATIVO</span> = <span
+                        class="kw2">true</span>;</div>
+                <p>Valor <strong>não pode ser reatribuído</strong>. Use para dados fixos como versões, configurações e
+                    valores matemáticos.</p>
+            </div>
+
+            <div class="concept-card">
+                <h3 class="c-green">let — variável</h3>
+                <div class="code-line"><span class="kw">let</span> <span class="var">nome</span>; <span class="cmt">//
+                        undefined</span></div>
+                <div class="code-line"><span class="var">nome</span> = <span class="str">"João"</span>; <span
+                        class="cmt">// atribuição</span></div>
+                <p>Valor <strong>pode ser alterado</strong>. Use para dados que mudam: entrada do usuário, resultados de
+                    cálculos.</p>
+            </div>
+
+            <div class="concept-card">
+                <h3 class="c-purple">prompt()</h3>
+                <div class="code-line"><span class="kw">let</span> <span class="var">n</span> = <span
+                        class="fn">prompt</span>(<span class="str">"Nome:"</span>);</div>
+                <div class="code-line"><span class="cmt">// retorna: string ou null</span></div>
+                <p>Exibe uma caixa de <strong>entrada de texto</strong>. Sempre retorna <code>string</code> — use
+                    <code>Number()</code> para converter.
+                </p>
+            </div>
+
+            <div class="concept-card">
+                <h3 class="c-orange">alert() e console.log()</h3>
+                <div class="code-line"><span class="fn">alert</span>(<span class="str">"Mensagem"</span>);</div>
+                <div class="code-line"><span class="fn">console</span>.<span class="fn">log</span>(<span
+                        class="var">variavel</span>);</div>
+                <p><code>alert</code> mostra caixa de diálogo na tela. <code>console.log</code> imprime no console do
+                    navegador (F12).</p>
+            </div>
+
+        </div>
+
+        <!-- SAÍDA SIMULADA -->
+        <div class="section-label">saída esperada</div>
+
+        <div class="output-section">
+            <div class="output-header">console do navegador (F12 → Console)</div>
+
+        </div>
+    </div>
+
+    <script src="aula01.js"></script>
+</body>
+
+</html>
